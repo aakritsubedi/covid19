@@ -10,3 +10,11 @@
   width: 40px;
   border-radius: 50%;
 }
+
+.hospital-list {
+  list-style-type: none;
+}
+
+.hospital-list li a {
+  color: #222222;
+}

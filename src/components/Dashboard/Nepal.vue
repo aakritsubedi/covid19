@@ -18,7 +18,7 @@
     </div>
     <div class="row">
       <div class="col-md-8 offset-2">
-        <Chart :chartData="chartData" />
+        <Chart :chartData="chartData" height="275" />
       </div>
     </div>
   </div>
