@@ -1,0 +1,55 @@
+.side-menu {
+  width: 8%;
+  float: left;
+  height: 100vh;
+  background-color:#2C3335;
+}
+.display-area {
+  width: 92%;
+  float: right;
+  height: 100vh;
+}
+/* Sidebar */
+.company-title {
+  text-align: center;
+  padding: 10px 0;
+  transition: 0.8s ease-in-out;
+  border-bottom: 10px solid#58CEBF;
+}
+.company-title:hover {
+  border-bottom: 10px solid #B83227;
+}
+.sidebar-title {
+  color: #fff;
+  font-size: 18px;
+  font-weight: light;
+}
+.icon {
+  color: #fff;
+  display: block;
+  font-size: 34px;
+}
+#menu .icon:hover {
+  opacity: 0.4;
+}
+#menu {
+  left: 0;
+  bottom: 0;
+  width: 8%;
+  z-index: 1;
+  padding: 0;
+  position: fixed;
+  text-align: center;
+}
+#menu .icon {
+  margin: 20px 0;
+  transition: all 0.5s ease-out !important;
+  -webkit-transition: all 0.5s ease-out;
+  -moz-transition: all 0.5s ease-out;
+  -o-transition: all 0.5s ease-out;
+}
+.dashboard-date {
+  font-weight: light;
+  letter-spacing: 2px;
+  color: #525252;
+}

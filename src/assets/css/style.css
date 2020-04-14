@@ -1,0 +1,12 @@
+#app {
+  width: 100%;
+}
+.display-area {
+  text-align: center;
+}
+
+.sidebar-img {
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+}
