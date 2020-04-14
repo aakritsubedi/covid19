@@ -18,15 +18,25 @@
     </div>
     <div class="row">
       <div class="col-md-6 offset-3">
-        <select v-model="selectedCountry" class="form-control" @change="updateData()">
-          <option selected>Global</option>
-          <option v-for="country in countries" :key="country">{{ country }}</option>
-        </select>
+        <div class="form-inline">
+          <div class="form-group">
+            <label for="country mr-3">Select Country:</label>
+            <select
+              v-model="selectedCountry"
+              class="form-control m-3"
+              @change="updateData()"
+              id="country"
+            >
+              <option selected>Global</option>
+              <option v-for="country in countries" :key="country">{{ country }}</option>
+            </select>
+          </div>
+        </div>
       </div>
     </div>
     <div class="row">
       <div class="col-md-8 offset-2">
-        <Chart :chartData="chartData" height="275"/>
+        <Chart :chartData="chartData" height="275" />
       </div>
     </div>
   </div>
@@ -45,7 +55,7 @@ export default {
       global: {},
       lastUpdate: "",
       chartData: [["Corona Report", "Deaths", "Recovered", "Confirmed"]],
-      selectedCountry: 'Global',
+      selectedCountry: "Global",
       countries: []
     };
   },
@@ -70,31 +80,34 @@ export default {
     valueForChart.push(this.global["confirmed"].value);
 
     this.chartData.push(valueForChart);
-    
-    this.countries = await api.fetchCountries().then(data => data).catch(error => console.log(error));
+
+    this.countries = await api
+      .fetchCountries()
+      .then(data => data)
+      .catch(error => console.log(error));
   },
   methods: {
-    updateData: async function () {
+    updateData: async function() {
       this.global = await api
-      .fetchByCountry(this.selectedCountry)
-      .then(data => {
-        data["confirmed"]["subtitle"] = "Number of active cases of COVID-19.";
-        data["recovered"]["subtitle"] = "Number of recoveries from COVID-19.";
-        data["deaths"]["subtitle"] = "Number of deaths caused by COVID-19.";
+        .fetchByCountry(this.selectedCountry)
+        .then(data => {
+          data["confirmed"]["subtitle"] = "Number of active cases of COVID-19.";
+          data["recovered"]["subtitle"] = "Number of recoveries from COVID-19.";
+          data["deaths"]["subtitle"] = "Number of deaths caused by COVID-19.";
 
-        return data;
-      })
-      .catch(error => console.log(error));
+          return data;
+        })
+        .catch(error => console.log(error));
 
-    this.lastUpdate = this.global["lastUpdate"];
+      this.lastUpdate = this.global["lastUpdate"];
 
-    delete this.global["lastUpdate"];
-    const valueForChart = ["Corona"];
-    valueForChart.push(this.global["deaths"].value);
-    valueForChart.push(this.global["recovered"].value);
-    valueForChart.push(this.global["confirmed"].value);
-    this.chartData=[["Corona Report", "Deaths", "Recovered", "Confirmed"]];
-    this.chartData.push(valueForChart);
+      delete this.global["lastUpdate"];
+      const valueForChart = ["Corona"];
+      valueForChart.push(this.global["deaths"].value);
+      valueForChart.push(this.global["recovered"].value);
+      valueForChart.push(this.global["confirmed"].value);
+      this.chartData = [["Corona Report", "Deaths", "Recovered", "Confirmed"]];
+      this.chartData.push(valueForChart);
     }
   }
 };
