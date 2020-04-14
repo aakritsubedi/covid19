@@ -11,7 +11,7 @@
         <li class="icon fa fa-globe" @click="() => setComponent('Main')" title="World Statistics"></li>
         <li class="icon fa fa-sticky-note-o" @click="() => setComponent('Imp')" title="List of Imp Contact No."></li>
         <li class="icon fa fa-eyedropper" @click="() => setComponent('GetTested')" title="Hospital Info"></li>
-        <li class="icon fa fa-share-alt"></li>
+        <li class="icon fa fa-share-alt" @click="() => setComponent('About')" title="About Covid19"></li>
       </ul>
     </div>
     <div class="display-area">
@@ -29,6 +29,7 @@ import Main from "@/components/Dashboard/Main";
 import Nepal from "@/components/Dashboard/Nepal";
 import Imp from "@/components/Dashboard/Imp";
 import GetTested from "@/components/Dashboard/GetTested";
+import About from "@/components/Dashboard/About";
 
 export default {
   name: "Dashboard",
@@ -37,7 +38,8 @@ export default {
     Nepal,
     Imp,
     GetTested,
-    Covid19
+    Covid19,
+    About
   },
   data() {
     return {
