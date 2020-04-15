@@ -77,6 +77,7 @@ import Nepal from "@/components/Dashboard/Nepal";
 import Imp from "@/components/Dashboard/Imp";
 import GetTested from "@/components/Dashboard/GetTested";
 import About from "@/components/Dashboard/About";
+import Map from "@/components/Dashboard/Map/MapContainer";
 
 export default {
   name: "Dashboard",
@@ -86,11 +87,12 @@ export default {
     Imp,
     GetTested,
     Covid19,
-    About
+    About,
+    Map
   },
   data() {
     return {
-      component: "Main"
+      component: "Map"
     };
   },
   methods: {
