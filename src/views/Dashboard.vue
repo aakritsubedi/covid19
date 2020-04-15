@@ -2,33 +2,51 @@
   <div class="dashboard-wrapper">
     <div class="side-menu">
       <div class="list-group">
-        <div class="list-group__item list-group__item" @click="() => setComponent('Covid19')" title="Nepal Statistics">
+        <div
+          class="list-group__item list-group__item"
+          @click="() => setComponent('Covid19')"
+          title="Nepal Statistics"
+        >
           <div class="list-group__icon">
             <i class="fa fa-medkit"></i>
           </div>
           <p class="list-group__label">Covid-19</p>
         </div>
-        <div class="list-group__item list-group__item" @click="() => setComponent('Nepal')" title="Nepal Statistics">
+        <div
+          class="list-group__item list-group__item"
+          @click="() => setComponent('Nepal')"
+          title="Nepal Statistics"
+        >
           <div class="list-group__icon">
             <img src="@/assets/images/nepal.gif" class="sidebar-img" />
           </div>
           <p class="list-group__label">Nepal</p>
         </div>
-        <div class="list-group__item list-group__item--active" @click="() => setComponent('Main')" title="World Statistics">
+        <div
+          class="list-group__item list-group__item--active"
+          @click="() => setComponent('Main')"
+          title="World Statistics"
+        >
           <div class="list-group__icon">
             <i class="fa fa-globe"></i>
           </div>
           <p class="list-group__label">Global</p>
         </div>
-        <div class="list-group__item" @click="() => setComponent('Imp')"
-          title="List of Imp Contact No.">
+        <div
+          class="list-group__item"
+          @click="() => setComponent('Imp')"
+          title="List of Imp Contact No."
+        >
           <div class="list-group__icon">
             <i class="fa fa-sticky-note-o"></i>
           </div>
           <p class="list-group__label">Contact</p>
         </div>
-        <div class="list-group__item" @click="() => setComponent('GetTested')"
-          title="Hospital Info">
+        <div
+          class="list-group__item"
+          @click="() => setComponent('GetTested')"
+          title="Hospital Info"
+        >
           <div class="list-group__icon">
             <i class="fa fa-eyedropper"></i>
           </div>
@@ -52,7 +70,7 @@
   </div>
 </template>
 
-// <script>
+ <script>
 import Covid19 from "@/components/Dashboard/Covid19";
 import Main from "@/components/Dashboard/Main";
 import Nepal from "@/components/Dashboard/Nepal";
