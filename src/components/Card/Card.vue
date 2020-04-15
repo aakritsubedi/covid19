@@ -1,12 +1,9 @@
 <template>
-  <div class="card" style="width: 16rem;">
-    <div class="card-body">
-      <h5 class="card-title text-capitalize">{{ title }}</h5>
-      <h3>{{ animatedNumber }}</h3>
-      <span class="font-weight-lighter">{{ subtitle }}</span>
-      <!-- <a href="#" class="card-link"> 
-        <i class="fa fa-eye"></i>
-      </a>-->
+  <div class="newcard">
+    <p class="title">{{ title }}</p>
+    <div class="body" :class="extraClass">
+      <p class="data">{{ animatedNumber }}</p>
+      <p class="sublabel">{{ subtitle }}</p>
     </div>
   </div>
 </template>
@@ -19,8 +16,27 @@ export default {
   props: ["title", "count", "subtitle"],
   data() {
     return {
-      tweenedNumber: this.count
+      tweenedNumber: this.count,
+      extraClass: ''
     };
+  },
+  methods: {
+    getClass() {
+      switch(this.title) {
+        case 'confirmed':
+          this.extraClass = 'bg-success';
+          break;
+        case 'recovered':
+          this.extraClass = 'bg-warning';
+          break;
+        case 'deaths':
+          this.extraClass = 'bg-danger';
+          break;
+      }
+    }
+  },
+  created() {
+    this.getClass();
   },
   computed: {
     animatedNumber: function() {

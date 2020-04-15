@@ -5,17 +5,18 @@
 </template>
 
 <script>
-import Dashboard from './views/Dashboard.vue'
+import Dashboard from "./views/Dashboard.vue";
 
 export default {
-  name: 'App',
+  name: "App",
   components: {
     Dashboard
   }
-}
+};
 </script>
 
 <style>
 @import "assets/css/style.css";
 @import "assets/css/main.css";
+@import "assets/css/new.css";
 </style>

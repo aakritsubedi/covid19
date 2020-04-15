@@ -1,8 +1,7 @@
 <template>
-  <div class="container text-left">
-    <div class="row">
-      <h3>Important Contact Point</h3>
-    </div>
+  <div class="contact-container text-left">
+    <p class="heading">Important Contact Point</p>
+
     <div class="row">
       <div class="col-md-8">
         <ul>
@@ -51,9 +50,15 @@
         <ul>
           <li>Important Links</li>
           <ul>
-            <li><a href="https://covid.hamropatro.com/" target="_blank">Call to Doctor Sewa</a></li>
-            <li><a href="http://www.coronanepal.org/" target="_blank">Corona Nepal</a></li>
-            <li><a href="http://covid19.mohp.gov.np/" target="_blank">Latest Data by GON</a></li>
+            <li>
+              <a href="https://covid.hamropatro.com/" target="_blank">Call to Doctor Sewa</a>
+            </li>
+            <li>
+              <a href="http://www.coronanepal.org/" target="_blank">Corona Nepal</a>
+            </li>
+            <li>
+              <a href="http://covid19.mohp.gov.np/" target="_blank">Latest Data by GON</a>
+            </li>
           </ul>
         </ul>
       </div>

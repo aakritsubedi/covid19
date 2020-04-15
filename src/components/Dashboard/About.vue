@@ -11,6 +11,9 @@
       <li class="nav-item">
         <a class="nav-link" data-toggle="tab" href="#menu2">Treatment</a>
       </li>
+      <li class="nav-item">
+        <a data-toggle="tab" class="nav-link" href="#menu3">Get Tested</a>
+      </li>
     </ul>
     <!-- Tab Content -->
     <div class="tab-content mt-3">
@@ -25,7 +28,8 @@
           <li>tiredness</li>
           <li>difficulty breathing (severe cases)</li>
         </ul>
-        <a id="learn-more"
+        <a
+          id="learn-more"
           href="https://www.who.int/news-room/q-a-detail/q-a-coronaviruses#:~:text=symptoms"
         >Learn more at who.int</a>
       </div>
@@ -44,7 +48,8 @@
         <ul>
           <li>Touch your eyes, nose, or mouth if your hands are not clean</li>
         </ul>
-        <a id="learn-more"
+        <a
+          id="learn-more"
           href="https://www.who.int/emergencies/diseases/novel-coronavirus-2019/advice-for-public"
           target="_blank"
         >Learn more at who.int</a>
@@ -60,13 +65,43 @@
           <li>drink plenty of liquids</li>
           <li>use a room humidifier or take a hot shower to help ease a sore throat and cough</li>
         </ul>
-        <a id="learn-more" href="https://www.who.int/news-room/q-a-detail/q-a-coronaviruses#:~:text=protect" target="_blank">learn more at who.int</a>
-        <hr>
+        <a
+          id="learn-more"
+          href="https://www.who.int/news-room/q-a-detail/q-a-coronaviruses#:~:text=protect"
+          target="_blank"
+        >learn more at who.int</a>
+        <hr />
         <span class="font-weight-bold">Medical treatments</span>
-        <p>
-          If you develop a fever, cough, and have difficulty breathing, promptly seek medical care. Call in advance and tell your health provider of any recent travel or recent contact with travelers.
-        </p>
-        <a id="learn-more" href="https://www.who.int/news-room/q-a-detail/q-a-coronaviruses#:~:text=treatment" target="_blank">learn more at who.int</a>
+        <p>If you develop a fever, cough, and have difficulty breathing, promptly seek medical care. Call in advance and tell your health provider of any recent travel or recent contact with travelers.</p>
+        <a
+          id="learn-more"
+          href="https://www.who.int/news-room/q-a-detail/q-a-coronaviruses#:~:text=treatment"
+          target="_blank"
+        >learn more at who.int</a>
+      </div>
+      <div class="tab-pane container fade" id="menu3">
+        <h3>Q. When to get Tested?</h3>
+        <p>If you believe you have been exposed to COVID-19 and develop symptoms like fever, cough and difficulty of breathing, call your doctor!</p>
+        <ul class="symptoms">
+          <li>
+            <img src="https://img.icons8.com/ios-glyphs/30/000000/fever.png" />
+            High Fever
+            <span class="d-block" style="font-size:14px;">Fever above 100°F</span>
+          </li>
+          <li>
+            <img src="https://img.icons8.com/ultraviolet/40/000000/sneeze.png" />
+            Dry Cough
+            <span class="d-block" style="font-size:14px;">Continous dry cough</span>
+          </li>
+          <li>
+            <img src="https://img.icons8.com/flat_round/40/000000/oxygen-mask.png" />
+            Difficulty in breathing
+            <span
+              class="d-block"
+              style="font-size:14px;"
+            >in severe cases</span>
+          </li>
+        </ul>
       </div>
     </div>
   </div>
@@ -79,19 +114,32 @@ export default {
 </script>
 
 <style scoped>
-  #learn-more::before{
-    content: "Read this: ";
-    color: #3a3a3a;
-  }
-  #learn-more {
-    border: 1px solid #3a3a3a;
-    padding: 10px 15px;
-    text-decoration: none;
-    border-radius: 5px;
-    margin: 10px 0;
-  }
-  .nav-item a {
-    color: #777777;
-    font-size: 18px;
-  }
+#learn-more::before {
+  content: "Read this: ";
+  color: #3a3a3a;
+}
+#learn-more {
+  border: 1px solid #3a3a3a;
+  padding: 10px 15px;
+  text-decoration: none;
+  border-radius: 5px;
+  margin: 10px 0;
+}
+.nav-item a {
+  color: #777777;
+  font-size: 18px;
+}
+.symptoms li {
+  list-style: none;
+  border: 1px solid #3a3a3a;
+  padding: 10px 30px;
+  margin: 20px auto;
+  width: 50%;
+  font-size: 35px;
+  color: #252525;
+  border-radius: 5px;
+  -webkit-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
+  box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
+}
 </style>
