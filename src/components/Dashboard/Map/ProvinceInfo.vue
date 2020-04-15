@@ -1,13 +1,15 @@
 <template>
-  <div v-show="name" id="map-hover-info" class="popup-menu">
-    <div  class="data-group">
-      <p class="label">Province</p>
-      <p class="data text-capitalize">{{ name }}</p>
-    </div>
-    <div class="body">
+  <div>
+    <div v-show="name" id="map-hover-info" class="popup-menu">
       <div class="data-group">
-        <p class="label">Total No. of Hospitals</p>
-        <p class="data">{{ hospitalData[0][name].total }}</p>
+        <p class="label">Province</p>
+        <p class="data text-capitalize">{{ name }}</p>
+      </div>
+      <div class="body">
+        <div class="data-group">
+          <p class="label">Total No. of Hospitals</p>
+          <p class="data">{{ count }}</p>
+        </div>
       </div>
     </div>
   </div>
@@ -19,15 +21,72 @@ export default {
   props: ["name", "position"],
   data() {
     return {
+      count: 0,
       hospitalData: [
         {
-          province1: { total: 52 },
-          province2: { total: 20 },
-          bagmati: { total: 242 },
-          gandaki: { total: 46 },
-          province5: { total: 33 },
-          karnali: { total: 7 },
-          sudurpashchim: { total: 24 }
+          province1: {
+            total: 52,
+            hospital: [
+              { name: "Mechi Zone Hospital", contact: "023-520172" },
+              { name: "Koshi Zone Hospital", contact: "	021-570103" },
+              { name: "Birat Medical College", contact: "021-421063" },
+              { name: "Biratnagar Hospital", contact: "021-571042" }
+            ]
+          },
+          province2: {
+            total: 20,
+            hospital: [
+              { name: "Mechi Zone Hospital", contact: "023-520172" },
+              { name: "Koshi Zone Hospital", contact: "	021-570103" },
+              { name: "Birat Medical College", contact: "021-421063" },
+              { name: "Biratnagar Hospital", contact: "021-571042" }
+            ]
+          },
+          bagmati: {
+            total: 242,
+            hospital: [
+              { name: "Mechi Zone Hospital", contact: "023-520172" },
+              { name: "Koshi Zone Hospital", contact: "	021-570103" },
+              { name: "Birat Medical College", contact: "021-421063" },
+              { name: "Biratnagar Hospital", contact: "021-571042" }
+            ]
+          },
+          gandaki: {
+            total: 46,
+            hospital: [
+              { name: "Mechi Zone Hospital", contact: "023-520172" },
+              { name: "Koshi Zone Hospital", contact: "	021-570103" },
+              { name: "Birat Medical College", contact: "021-421063" },
+              { name: "Biratnagar Hospital", contact: "021-571042" }
+            ]
+          },
+          province5: {
+            total: 33,
+            hospital: [
+              { name: "Mechi Zone Hospital", contact: "023-520172" },
+              { name: "Koshi Zone Hospital", contact: "	021-570103" },
+              { name: "Birat Medical College", contact: "021-421063" },
+              { name: "Biratnagar Hospital", contact: "021-571042" }
+            ]
+          },
+          karnali: {
+            total: 7,
+            hospital: [
+              { name: "Mechi Zone Hospital", contact: "023-520172" },
+              { name: "Koshi Zone Hospital", contact: "	021-570103" },
+              { name: "Birat Medical College", contact: "021-421063" },
+              { name: "Biratnagar Hospital", contact: "021-571042" }
+            ]
+          },
+          sudurpashchim: {
+            total: 24,
+            hospital: [
+              { name: "Mechi Zone Hospital", contact: "023-520172" },
+              { name: "Koshi Zone Hospital", contact: "	021-570103" },
+              { name: "Birat Medical College", contact: "021-421063" },
+              { name: "Biratnagar Hospital", contact: "021-571042" }
+            ]
+          }
         }
       ]
     };
@@ -36,14 +95,19 @@ export default {
     const map = document.querySelector("#map-hover-info");
     map.style.display = "none";
   },
+  beforeUpdate() {
+    this.hospitals = [];
+    this.count = 0;
+  },
   updated() {
+    this.count = this.name ? this.hospitalData[0][this.name].total : 0;
     const map = document.querySelector("#map-hover-info");
-    if(this.map !== null) {
+    if (this.name !== null) {
       map.style.display = "block";
     }
 
-    map.style.top = this.position.y-150 +"px";
-    map.style.left = this.position.x -50  + "px";
+    map.style.top = this.position.y - 150 + "px";
+    map.style.left = this.position.x - 50 + "px";
   }
 };
 </script>
@@ -95,6 +159,11 @@ export default {
 .popup-menu .data {
   color: #fff;
   font-size: 17px;
+}
+.hospital-info {
+  padding: 10px;
+  width: 25%;
+  margin-top: -200px;
 }
 /*# sourceMappingURL=style.css.map */
 </style>
