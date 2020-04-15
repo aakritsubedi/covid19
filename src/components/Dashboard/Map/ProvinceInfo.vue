@@ -95,10 +95,6 @@ export default {
     const map = document.querySelector("#map-hover-info");
     map.style.display = "none";
   },
-  beforeUpdate() {
-    this.hospitals = [];
-    this.count = 0;
-  },
   updated() {
     this.count = this.name ? this.hospitalData[0][this.name].total : 0;
     const map = document.querySelector("#map-hover-info");
