@@ -1,7 +1,7 @@
 :root {
   --primary-color: #649cfc;
   --accent-color: #ec61a2;
-  --text-color: #bebebe;
+  --text-color: #b6b6b6;
   --text-color-dark: #3a3a3a;
   --text-color-ligh: #e4e4e4;
 }
@@ -18,17 +18,81 @@
   background-color: #d32f2f;
 }
 
-.main-container {
-  padding: 0px 20px;
+.mt-10 {
+  margin-top: 10px;
 }
 
-.card-group {
+/* flex grid */
+.newrow {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-flex: 0;
+      -ms-flex: 0 1 auto;
+          flex: 0 1 auto;
+  margin-right: -0.5rem;
+  margin-left: -0.5rem;
+}
+
+.col-xs-3 {
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 auto;
+          flex: 0 0 auto;
+  padding-right: 0.5rem;
+  padding-left: 0.5rem;
+  -ms-flex-preferred-size: 33.3333%;
+      flex-basis: 33.3333%;
+  max-width: 33.3333%;
+}
+
+.col-xs-12 {
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 auto;
+          flex: 0 0 auto;
+  padding-right: 0.5rem;
+  padding-left: 0.5rem;
+  -ms-flex-preferred-size: 100%;
+      flex-basis: 100%;
+  max-width: 100%;
+}
+
+.custom-select {
+  width: 100%;
+}
+
+.main-container {
+  margin: 0px 20px;
+}
+
+.main-container .heading {
+  font-size: 18px;
+  text-align: left;
+  margin: 0px;
+  padding: 30px 0px 10px 0px;
+}
+
+.main-container .date-info {
+  margin-top: 10px;
+}
+
+.main-container .date-info p {
+  margin-bottom: 0px;
+  color: var(--text-color-dark);
+  font: 15px;
+}
+
+.main-container .date-info p:first-child {
+  font-size: 12px;
+}
+
+.card-group {
+  padding-top: 20px;
 }
 
 .newcard {
@@ -42,10 +106,11 @@
 }
 
 .newcard .title {
-  color: var(--text-color-dark);
+  color: var(--text-color);
   text-align: left;
   font-size: 14px;
   text-transform: capitalize;
+  margin-bottom: 3px;
 }
 
 .newcard .body {
@@ -72,5 +137,120 @@
 
 .newcard .sublabel {
   font-size: 12px;
+}
+
+.contact-container .heading {
+  text-align: center;
+  font-size: 20px;
+  margin-top: 10px;
+}
+
+/* side bar menu */
+.list-group {
+  width: 100%;
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  color: #bebebe;
+  padding-top: 40px;
+}
+
+.list-group__item {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  border-bottom-width: 0px;
+  cursor: pointer;
+  padding-bottom: 30px;
+}
+
+.list-group__item:hover {
+  color: var(--primary-color);
+}
+
+.list-group__item--active {
+  color: var(--primary-color);
+  border-bottom-color: var(--primary-color) !important;
+}
+
+.list-group__icon {
+  font-size: 20px;
+}
+
+.list-group__label {
+  margin: unset;
+  font-size: 15px;
+}
+
+/* media query */
+@media only screen and (max-width: 768px) {
+  .dashboard-wrapper {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: reverse;
+        -ms-flex-direction: column-reverse;
+            flex-direction: column-reverse;
+  }
+  .side-menu {
+    width: 100%;
+    height: 60px;
+    position: fixed;
+    z-index: 10;
+    background-color: #ffffff;
+    border-top: 1px solid #f0f0f0;
+    bottom: 0;
+  }
+  .display-area {
+    width: 100%;
+    background-color: white;
+    display: unset;
+    height: calc(100vh - 60px);
+    padding: 20px 0px;
+    overflow: auto;
+    padding-bottom: 40px;
+  }
+  .header-image {
+    width: 50%;
+    height: auto;
+  }
+  .list-group {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -webkit-box-pack: space-evenly;
+        -ms-flex-pack: space-evenly;
+            justify-content: space-evenly;
+    margin-top: 0px;
+    padding: 0;
+  }
+  .list-group__item {
+    border-bottom-width: 5px;
+    border-bottom-style: solid;
+    border-bottom-color: transparent;
+    margin-bottom: 0px;
+    padding: 0 10px;
+    line-height: 1.4;
+  }
+  .card-group {
+    padding-top: 5px;
+  }
+  .main-container .heading {
+    font-size: 20px;
+  }
 }
 /*# sourceMappingURL=new.css.map */
