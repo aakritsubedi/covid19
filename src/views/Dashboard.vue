@@ -1,29 +1,62 @@
 <template>
-  <div class="dashboard-wrapper clearfix">
+  <div class="dashboard-wrapper">
     <div class="side-menu">
-      <div class="company-title mt-2">
-        <span class="sidebar-title" @click="() => setComponent('Covid19')">Covid 19</span>
+      <div class="list-group">
+        <div class="list-group__item list-group__item--active">
+          <div class="list-group__icon">
+            <i class="fa fa-globe"></i>
+          </div>
+          <p class="list-group__label">Global</p>
+        </div>
+        <div class="list-group__item">
+          <div class="list-group__icon">
+            <i class="fa fa-sticky-note-o"></i>
+          </div>
+          <p class="list-group__label">Contact</p>
+        </div>
+        <div class="list-group__item">
+          <div class="list-group__icon">
+            <i class="fa fa-eyedropper"></i>
+          </div>
+          <p class="list-group__label">Hospital</p>
+        </div>
+
+        <div class="list-group__item">
+          <div class="list-group__icon">
+            <i class="fa fa-eyedropper"></i>
+          </div>
+          <p class="list-group__label">About</p>
+        </div>
       </div>
+      <!--
       <ul id="menu">
         <li @click="() => setComponent('Nepal')" title="Nepal Statistics">
           <img src="@/assets/images/nepal.gif" class="sidebar-img" />
         </li>
         <li class="icon fa fa-globe" @click="() => setComponent('Main')" title="World Statistics"></li>
-        <li class="icon fa fa-sticky-note-o" @click="() => setComponent('Imp')" title="List of Imp Contact No."></li>
-        <li class="icon fa fa-eyedropper" @click="() => setComponent('GetTested')" title="Hospital Info"></li>
+        <li
+          class="icon fa fa-sticky-note-o"
+          @click="() => setComponent('Imp')"
+          title="List of Imp Contact No."
+        ></li>
+        <li
+          class="icon fa fa-eyedropper"
+          @click="() => setComponent('GetTested')"
+          title="Hospital Info"
+        ></li>
         <li class="icon fa fa-share-alt" @click="() => setComponent('About')" title="About Covid19"></li>
-      </ul>
+      </ul>-->
     </div>
     <div class="display-area">
-      <img src="@/assets/images/covid.png" alt="Covid 19" />
-      <transition name="component-fade" mode="out-in">
+      <img class="header-image" src="@/assets/images/covid.png" alt="Covid 19" />
+      <!-- <transition name="component-fade" mode="out-in">
         <component :is="component"></component>
-      </transition>
+      </transition>-->
     </div>
   </div>
 </template>
 
-<script>
+// <script>
 import Covid19 from "@/components/Dashboard/Covid19";
 import Main from "@/components/Dashboard/Main";
 import Nepal from "@/components/Dashboard/Nepal";
