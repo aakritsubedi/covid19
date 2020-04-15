@@ -25,13 +25,13 @@ export default {
       if (!this.chartsLib) return null;
       return this.chartsLib.charts.Bar.convertOptions({
         chart: {
-          title: "Corona Impact",
+          title: "Covid-19 Impact",
           subtitle: "Deaths, Recovered and Confirmed"
         },
         bars: "horizontal", // Required for Material Bar Charts.
         hAxis: { format: "decimal" },
         height: this.height,
-        colors: ["#B83227", "#6ab04c", "#2C3335"]
+        colors: ["#d32f2f", "#fbc02d", "#388e3c"]
       });
     }
   },

@@ -2,40 +2,58 @@
   <div class="dashboard-wrapper">
     <div class="side-menu">
       <div class="list-group">
-        <div class="list-group__item list-group__item" @click="() => setComponent('Covid19')" title="Nepal Statistics">
+        <div
+          class="list-group__item list-group__item"
+          @click="(event) => setComponent(event, 'Covid19')"
+          title="Daily Statistics"
+        >
           <div class="list-group__icon">
             <i class="fa fa-medkit"></i>
           </div>
-          <p class="list-group__label">Covid-19</p>
+          <p class="list-group__label">Update</p>
         </div>
-        <div class="list-group__item list-group__item" @click="() => setComponent('Nepal')" title="Nepal Statistics">
+        <div
+          class="list-group__item list-group__item"
+          @click="(event) => setComponent(event, 'Nepal')"
+          title="Nepal Statistics"
+        >
           <div class="list-group__icon">
             <img src="@/assets/images/nepal.gif" class="sidebar-img" />
           </div>
           <p class="list-group__label">Nepal</p>
         </div>
-        <div class="list-group__item list-group__item--active" @click="() => setComponent('Main')" title="World Statistics">
+        <div
+          class="list-group__item"
+          @click="(event) => setComponent(event, 'Main')"
+          title="World Statistics"
+        >
           <div class="list-group__icon">
             <i class="fa fa-globe"></i>
           </div>
           <p class="list-group__label">Global</p>
         </div>
-        <div class="list-group__item" @click="() => setComponent('Imp')"
-          title="List of Imp Contact No.">
+        <div
+          class="list-group__item"
+          @click="(event) => setComponent(event, 'Imp')"
+          title="List of Imp Contact No."
+        >
           <div class="list-group__icon">
             <i class="fa fa-sticky-note-o"></i>
           </div>
           <p class="list-group__label">Contact</p>
         </div>
-        <div class="list-group__item" @click="() => setComponent('GetTested')"
-          title="Hospital Info">
+        <div
+          class="list-group__item"
+          @click="(event) => setComponent(event, 'GetTested')"
+          title="Hospital Info"
+        >
           <div class="list-group__icon">
             <i class="fa fa-eyedropper"></i>
           </div>
           <p class="list-group__label">Hospital</p>
         </div>
 
-        <div class="list-group__item" @click="() => setComponent('About')" title="About Covid19">
+        <div class="list-group__item" @click="(event) => setComponent(event, 'About')" title="About Covid19">
           <div class="list-group__icon">
             <i class="fa fa-share-alt"></i>
           </div>
@@ -76,7 +94,7 @@ export default {
     };
   },
   methods: {
-    setComponent: function(component) {
+    setComponent: function(event, component) {
       this.component = component;
     }
   }
