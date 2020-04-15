@@ -14,7 +14,7 @@ import { GChart } from "vue-google-charts";
 export default {
   name: "Chart",
   components: { GChart },
-  props: ["chartData", ],
+  props: ["chartData"],
   data() {
     return {
       chartsLib: null
@@ -31,7 +31,7 @@ export default {
         bars: "horizontal", // Required for Material Bar Charts.
         hAxis: { format: "decimal" },
         height: this.height,
-        colors: ["#d32f2f", "#fbc02d", "#388e3c"]
+        colors: ["#d32f2f", "#388e3c", "#fbc02d"]
       });
     }
   },

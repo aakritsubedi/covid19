@@ -25,7 +25,7 @@
     </div>
     <div class="newrow">
       <div class="col-xs-12">
-        <Chart :chartData="chartData" height="275" width="100%" />
+        <Chart :chartData="chartData" height="300" width="100%" />
       </div>
     </div>
   </div>
