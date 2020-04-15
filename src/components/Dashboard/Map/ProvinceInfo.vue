@@ -1,21 +1,13 @@
 <template>
-  <div id="map-hover-info" class="popup-menu">
-    <div class="data-group">
+  <div v-show="name" id="map-hover-info" class="popup-menu">
+    <div  class="data-group">
       <p class="label">Province</p>
-      <p class="data">{{ name }}</p>
+      <p class="data text-capitalize">{{ name }}</p>
     </div>
     <div class="body">
       <div class="data-group">
-        <p class="label">Confirmed</p>
-        <p class="data">00000</p>
-      </div>
-      <div class="data-group">
-        <p class="label">Recovered</p>
-        <p class="data">00000</p>
-      </div>
-      <div class="data-group">
-        <p class="label">Deaths</p>
-        <p class="data">00000</p>
+        <p class="label">Total No. of Hospitals</p>
+        <p class="data">{{ hospitalData[0][name].total }}</p>
       </div>
     </div>
   </div>
@@ -24,32 +16,53 @@
 <script>
 export default {
   name: "ProvinceInfo",
-  props: ['name']
+  props: ["name", "position"],
+  data() {
+    return {
+      hospitalData: [
+        {
+          province1: { total: 52 },
+          province2: { total: 20 },
+          bagmati: { total: 242 },
+          gandaki: { total: 46 },
+          province5: { total: 33 },
+          karnali: { total: 7 },
+          sudurpashchim: { total: 24 }
+        }
+      ]
+    };
+  },
+  mounted() {
+    const map = document.querySelector("#map-hover-info");
+    map.style.display = "none";
+  },
+  updated() {
+    const map = document.querySelector("#map-hover-info");
+    if(this.map !== null) {
+      map.style.display = "block";
+    }
+
+    map.style.top = this.position.y-150 +"px";
+    map.style.left = this.position.x -50  + "px";
+  }
 };
 </script>
 
 <style scoped>
-path.active {
-  fill: green;
-}
-
-path {
-  cursor: pointer;
-}
-
 #map-hover-info {
   position: absolute;
-  top: 0;
-  left: 0;
-  display: none;
+  border-radius: 10px;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+  -webkit-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
+  box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
 }
 
 .popup-menu {
-  background-color: white;
+  background-color: #2c3335;
   -webkit-box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
   box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
   padding: 10px 15px;
@@ -75,12 +88,12 @@ path {
 }
 
 .popup-menu .label {
-  color: #8a8a8a;
+  color: #fff;
   font-size: 13px;
 }
 
 .popup-menu .data {
-  color: #424242;
+  color: #fff;
   font-size: 17px;
 }
 /*# sourceMappingURL=style.css.map */

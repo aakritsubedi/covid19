@@ -4,16 +4,6 @@
       <div class="list-group">
         <div
           class="list-group__item list-group__item"
-          @click="(event) => setComponent(event, 'Covid19')"
-          title="Daily Statistics"
-        >
-          <div class="list-group__icon">
-            <i class="fa fa-medkit"></i>
-          </div>
-          <p class="list-group__label">Update</p>
-        </div>
-        <div
-          class="list-group__item list-group__item"
           @click="(event) => setComponent(event, 'Nepal')"
           title="Nepal Statistics"
         >
@@ -44,7 +34,7 @@
         </div>
         <div
           class="list-group__item"
-          @click="(event) => setComponent(event, 'GetTested')"
+          @click="(event) => setComponent(event, 'Map')"
           title="Hospital Info"
         >
           <div class="list-group__icon">
