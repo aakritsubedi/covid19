@@ -90,8 +90,11 @@ export default {
 </script>
 
 <style scoped>
+path {
+  fill: rgb(102, 158, 110);
+}
 path.active {
-  fill: green;
+  fill:rgb(195, 226, 199);
 }
 path {
   cursor: pointer;
