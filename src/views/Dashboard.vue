@@ -49,9 +49,9 @@
     </div>
     <div class="display-area">
       <img class="header-image" src="@/assets/images/covid.png" alt="Covid 19" />
-      <!-- <transition name="component-fade" mode="out-in">
+      <transition name="component-fade" mode="out-in">
         <component :is="component"></component>
-      </transition>-->
+      </transition>
     </div>
   </div>
 </template>
