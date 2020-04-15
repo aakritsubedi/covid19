@@ -1,5 +1,5 @@
 <template>
-  <div class="container-fluid">
+  <div class="main-container">
     <div>
       <h4>Report of: {{ selectedCountry }}</h4>
       <span>
@@ -8,22 +8,25 @@
       </span>
     </div>
     <div class="card-group newrow">
-      <div class="col-xs-3">
-        <div class="newcard">
+      <div class="newcard">
+        <p class="title">Confirmed</p>
+        <div class="body bg-warning">
           <p class="data">1982281</p>
-          <div class="label label--warning">confirmed</div>
+          <p class="sublabel">Number of active cases of COVID-19.</p>
         </div>
       </div>
-      <div class="col-xs-3">
-        <div class="newcard">
+      <div class="newcard">
+        <p class="title">recovered</p>
+        <div class="body bg-success">
           <p class="data">1982281</p>
-          <div class="label label--success">recovered</div>
+          <p class="sublabel">Number of active cases of COVID-19.</p>
         </div>
       </div>
-      <div class="col-xs-3">
-        <div class="newcard">
+      <div class="newcard">
+        <p class="title">Deaths</p>
+        <div class="body bg-danger">
           <p class="data">1982281</p>
-          <div class="label label--danger">deaths</div>
+          <p class="sublabel">Number of active cases of COVID-19.</p>
         </div>
       </div>
     </div>

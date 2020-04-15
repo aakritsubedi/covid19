@@ -61,12 +61,6 @@
   color: #525252;
 }
 
-:root {
-  --primary-color: #649cfc;
-  --accent-color: #ec61a2;
-  --text-color: #bebebe;
-  --text-color-dark: #3a3a3a;
-}
 /* side bar menu */
 
 .list-group {
@@ -97,39 +91,6 @@
 }
 
 /* main */
-
-.card-group {
-  display: flex;
-  justify-content: space-between;
-}
-
-.newcard {
-  width: 100%;
-  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
-}
-.label--warning {
-  background-color: #fbc02d;
-}
-.label--success {
-  background-color: #388e3c;
-}
-.label--danger {
-  background-color: #d32f2f;
-}
-.newcard .data {
-  padding: 10px 0px;
-  margin-bottom: 0px;
-  font-size: 16px;
-  font-weight: 500;
-}
-.newcard .label {
-  padding: 5px 0px;
-
-  font-size: 12px;
-  font-weight: bold;
-  color: white;
-  text-transform: uppercase;
-}
 
 /* flex grid */
 .newrow {
