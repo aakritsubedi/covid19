@@ -53,7 +53,11 @@
           <p class="list-group__label">Hospital</p>
         </div>
 
-        <div class="list-group__item" @click="(event) => setComponent(event, 'About')" title="About Covid19">
+        <div
+          class="list-group__item"
+          @click="(event) => setComponent(event, 'About')"
+          title="About Covid19"
+        >
           <div class="list-group__icon">
             <i class="fa fa-share-alt"></i>
           </div>
@@ -70,7 +74,7 @@
   </div>
 </template>
 
-// <script>
+ <script>
 import Covid19 from "@/components/Dashboard/Covid19";
 import Main from "@/components/Dashboard/Main";
 import Nepal from "@/components/Dashboard/Nepal";
