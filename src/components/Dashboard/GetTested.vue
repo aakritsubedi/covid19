@@ -1,5 +1,5 @@
 <template>
-  <div style="height:85%;overflow-y:scroll;" class="text-left">
+  <div class="text-left" style="margin:0px">
     <table class="table mt-3">
       <thead>
         <tr>
@@ -11,13 +11,11 @@
         <tr v-for="hospital in hospitals" :key="hospital">
           <td>
             <ul class="hospital-list">
-            <li>{{ hospital.name }}</li>
-            <li>{{ hospital.timing }}</li>
-          </ul>
+              <li>{{ hospital.name }}</li>
+              <li>{{ hospital.timing }}</li>
+            </ul>
           </td>
-          <td>
-            {{ hospital.contactNo}}
-          </td>
+          <td>{{ hospital.contactNo}}</td>
         </tr>
       </tbody>
     </table>
@@ -26,14 +24,22 @@
 
 <script>
 export default {
-  name: 'GetTested',
+  name: "GetTested",
   data() {
     return {
       hospitals: [
-        {name: 'Sukraraj Tropical And Infectious Disease Hospital', timing: '8 AM - 3 PM(Sunday - Friday)', contactNo: '01-4253395 , 01-4253396' },
-        {name: 'Patan Hospital', timing: '24Hrs (Everyday)', contactNo: '01-5522295'}
+        {
+          name: "Sukraraj Tropical And Infectious Disease Hospital",
+          timing: "8 AM - 3 PM(Sunday - Friday)",
+          contactNo: "01-4253395 , 01-4253396"
+        },
+        {
+          name: "Patan Hospital",
+          timing: "24Hrs (Everyday)",
+          contactNo: "01-5522295"
+        }
       ]
-    }
+    };
   }
-}
+};
 </script>

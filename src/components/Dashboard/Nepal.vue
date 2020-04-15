@@ -1,5 +1,5 @@
 <template>
-  <div class="container-fluid">
+  <div class="main-container">
     <div>
       <h2>{{ selectedCountry }}'s Report</h2>
       <span>
@@ -7,18 +7,19 @@
         <b>{{ lastUpdate | moment("dddd, MMMM Do YYYY") }}</b>
       </span>
     </div>
-    <div class="row mb-3" style="width:70%;margin:0 auto;">
+    <p class="heading">Report of {{selectedCountry}}</p>
+    <div class="card-group">
       <Card
         v-for="(data, index) in global"
-        :key="index"
+        :key="data.value"
         :title="index"
         :count="data.value"
         :subtitle="data.subtitle"
       />
     </div>
-    <div class="row">
-      <div class="col-md-8 offset-2">
-        <Chart :chartData="chartData" height="275" />
+    <div class="newrow">
+      <div class="col-md-10 offset-1">
+        <Chart :chartData="chartData" height="300" />
       </div>
     </div>
   </div>
@@ -37,7 +38,7 @@ export default {
       global: {},
       lastUpdate: "",
       chartData: [["Corona Report", "Deaths", "Recovered", "Confirmed"]],
-      selectedCountry: 'Nepal',
+      selectedCountry: "Nepal",
       countries: []
     };
   },

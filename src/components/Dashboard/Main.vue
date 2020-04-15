@@ -1,48 +1,37 @@
 <template>
-  <div class="container-fluid">
-    <div>
-      <h4>Report of: {{ selectedCountry }}</h4>
-      <span>
-        Last Updated:
-        <b>{{ lastUpdate | moment("dddd, MMMM Do YYYY") }}</b>
-      </span>
+  <div class="main-container">
+    <div class="date-info">
+      <p>last Updated</p>
+      <p>Wednesday April 15th 2020</p>
     </div>
-    <div class="row mb-3" style="width:70%;margin:0 auto;">
+
+    <div class="newrow country-select mt-10">
+      <div class="col-xs-12">
+        <select v-model="selectedCountry" class="custom-select" @change="updateData()" id="country">
+          <option selected>Global</option>
+          <option v-for="country in countries" :key="country">{{ country }}</option>
+        </select>
+      </div>
+    </div>
+    <p class="heading">Report of {{selectedCountry}}</p>
+    <div class="card-group">
       <Card
         v-for="(data, index) in global"
-        :key="index"
+        :key="data.value"
         :title="index"
         :count="data.value"
         :subtitle="data.subtitle"
       />
     </div>
-    <div class="row">
-      <div class="col-md-6 offset-3">
-        <div class="form-inline">
-          <div class="form-group">
-            <label for="country mr-3">Select Country:</label>
-            <select
-              v-model="selectedCountry"
-              class="form-control m-3"
-              @change="updateData()"
-              id="country"
-            >
-              <option selected>Global</option>
-              <option v-for="country in countries" :key="country">{{ country }}</option>
-            </select>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-md-8 offset-2">
-        <Chart :chartData="chartData" height="275" />
+    <div class="newrow">
+      <div class="col-xs-12">
+        <Chart :chartData="chartData" height="275" width="100%" />
       </div>
     </div>
   </div>
 </template>
 
-<script>
+// <script>
 import api from "@/api";
 import Chart from "./Chart";
 import Card from "@/components/Card/Card";
