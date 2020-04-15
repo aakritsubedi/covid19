@@ -7,65 +7,22 @@
 
     <div class="newrow country-select mt-10">
       <div class="col-xs-12">
-        <select class="custom-select">
+        <select v-model="selectedCountry" class="custom-select" @change="updateData()" id="country">
           <option selected>Global</option>
-          <option value>first</option>
+          <option v-for="country in countries" :key="country">{{ country }}</option>
         </select>
       </div>
     </div>
-
-    <p class="heading">Report of global</p>
+    <p class="heading">Report of {{selectedCountry}}</p>
     <div class="card-group">
-      <div class="newcard">
-        <p class="title">Confirmed</p>
-        <div class="body bg-warning">
-          <p class="data">1982281</p>
-          <p class="sublabel">Number of active cases of COVID-19.</p>
-        </div>
-      </div>
-      <div class="newcard">
-        <p class="title">recovered</p>
-        <div class="body bg-success">
-          <p class="data">1982281</p>
-          <p class="sublabel">Number of active cases of COVID-19.</p>
-        </div>
-      </div>
-      <div class="newcard">
-        <p class="title">Deaths</p>
-        <div class="body bg-danger">
-          <p class="data">1982281</p>
-          <p class="sublabel">Number of active cases of COVID-19.</p>
-        </div>
-      </div>
-    </div>
-
-    <!-- <div class="row mb-3" style="width:70%;margin:0 auto;">
       <Card
         v-for="(data, index) in global"
-        :key="index"
+        :key="data.value"
         :title="index"
         :count="data.value"
         :subtitle="data.subtitle"
       />
     </div>
-    <div class="row">
-      <div class="col-md-6 offset-3">
-        <div class="form-inline">
-          <div class="form-group">
-            <label for="country mr-3">Select Country:</label>
-            <select
-              v-model="selectedCountry"
-              class="form-control m-3"
-              @change="updateData()"
-              id="country"
-            >
-              <option selected>Global</option>
-              <option v-for="country in countries" :key="country">{{ country }}</option>
-            </select>
-          </div>
-        </div>
-      </div>
-    </div>-->
     <div class="newrow">
       <div class="col-xs-12">
         <Chart :chartData="chartData" height="275" width="100%" />
@@ -77,11 +34,11 @@
 // <script>
 import api from "@/api";
 import Chart from "./Chart";
-// import Card from "@/components/Card/Card";
+import Card from "@/components/Card/Card";
 
 export default {
   name: "Main",
-  components: { Chart },
+  components: { Card, Chart },
   data() {
     return {
       global: {},

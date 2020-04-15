@@ -2,50 +2,46 @@
   <div class="dashboard-wrapper">
     <div class="side-menu">
       <div class="list-group">
-        <div class="list-group__item list-group__item--active">
+        <div class="list-group__item list-group__item" @click="() => setComponent('Covid19')" title="Nepal Statistics">
+          <div class="list-group__icon">
+            <i class="fa fa-medkit"></i>
+          </div>
+          <p class="list-group__label">Covid-19</p>
+        </div>
+        <div class="list-group__item list-group__item" @click="() => setComponent('Nepal')" title="Nepal Statistics">
+          <div class="list-group__icon">
+            <img src="@/assets/images/nepal.gif" class="sidebar-img" />
+          </div>
+          <p class="list-group__label">Nepal</p>
+        </div>
+        <div class="list-group__item list-group__item--active" @click="() => setComponent('Main')" title="World Statistics">
           <div class="list-group__icon">
             <i class="fa fa-globe"></i>
           </div>
           <p class="list-group__label">Global</p>
         </div>
-        <div class="list-group__item">
+        <div class="list-group__item" @click="() => setComponent('Imp')"
+          title="List of Imp Contact No.">
           <div class="list-group__icon">
             <i class="fa fa-sticky-note-o"></i>
           </div>
           <p class="list-group__label">Contact</p>
         </div>
-        <div class="list-group__item">
+        <div class="list-group__item" @click="() => setComponent('GetTested')"
+          title="Hospital Info">
           <div class="list-group__icon">
             <i class="fa fa-eyedropper"></i>
           </div>
           <p class="list-group__label">Hospital</p>
         </div>
 
-        <div class="list-group__item">
+        <div class="list-group__item" @click="() => setComponent('About')" title="About Covid19">
           <div class="list-group__icon">
-            <i class="fa fa-eyedropper"></i>
+            <i class="fa fa-share-alt"></i>
           </div>
           <p class="list-group__label">About</p>
         </div>
       </div>
-      <!--
-      <ul id="menu">
-        <li @click="() => setComponent('Nepal')" title="Nepal Statistics">
-          <img src="@/assets/images/nepal.gif" class="sidebar-img" />
-        </li>
-        <li class="icon fa fa-globe" @click="() => setComponent('Main')" title="World Statistics"></li>
-        <li
-          class="icon fa fa-sticky-note-o"
-          @click="() => setComponent('Imp')"
-          title="List of Imp Contact No."
-        ></li>
-        <li
-          class="icon fa fa-eyedropper"
-          @click="() => setComponent('GetTested')"
-          title="Hospital Info"
-        ></li>
-        <li class="icon fa fa-share-alt" @click="() => setComponent('About')" title="About Covid19"></li>
-      </ul>-->
     </div>
     <div class="display-area">
       <img class="header-image" src="@/assets/images/covid.png" alt="Covid 19" />
