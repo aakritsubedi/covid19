@@ -8,7 +8,7 @@
           title="Nepal Statistics"
         >
           <div class="list-group__icon">
-            <img src="@/assets/images/nepal.gif" class="sidebar-img" />
+            <img src="@/assets/images/nepal.png" class="sidebar-img" />
           </div>
           <p class="list-group__label">Nepal</p>
         </div>

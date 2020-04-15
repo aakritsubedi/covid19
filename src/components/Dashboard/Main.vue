@@ -52,9 +52,9 @@ export default {
     this.global = await api
       .fetchAll()
       .then(data => {
-        data["confirmed"]["subtitle"] = "Number of active cases of COVID-19.";
-        data["recovered"]["subtitle"] = "Number of recoveries from COVID-19.";
-        data["deaths"]["subtitle"] = "Number of deaths caused by COVID-19.";
+        data["confirmed"]["subtitle"] = "Number of active cases";
+        data["recovered"]["subtitle"] = "Number of recoveries";
+        data["deaths"]["subtitle"] = "Number of deaths caused";
 
         return data;
       })
