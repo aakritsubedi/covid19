@@ -276,6 +276,34 @@
   color: white;
 }
 
+.global-card {
+  -webkit-box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.14), 0 2px 1px -1px rgba(0, 0, 0, 0.12), 0 1px 3px 0 rgba(0, 0, 0, 0.2);
+          box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.14), 0 2px 1px -1px rgba(0, 0, 0, 0.12), 0 1px 3px 0 rgba(0, 0, 0, 0.2);
+}
+
+.global-card .data {
+  font-weight: bold;
+}
+
+.global-card__top {
+  padding: 15px 40px;
+  color: white;
+}
+
+.global-card__top .data {
+  font-size: 38px;
+}
+
+.global-card__bottom {
+  padding: 5px 20px;
+}
+
+.hr-line {
+  height: 1px;
+  width: 100%;
+  background-color: var(--text-color-ligh);
+}
+
 /* media query */
 @media only screen and (max-width: 768px) {
   .dashboard-wrapper {
