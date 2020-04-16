@@ -81,4 +81,14 @@ export default {
       isp: localStorage.getItem('isp')
     };
   },
+  countryData: async () => {
+    const url = "https://api.covid19api.com/summary";
+    try {
+      let countries = await axios.get(url).then(data => data );
+
+      return { countries };
+    } catch (error) {
+      return error;
+    }
+  }
 };

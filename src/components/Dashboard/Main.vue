@@ -49,6 +49,12 @@
         <Chart :chartData="chartData" height="300" width="100%" />
       </div>
     </div>
+    <hr>
+    <div class="newrow">
+      <div class="col-xs-12">
+        <GeoChart :chartData="chartData" height="300" width="100%" />
+      </div>
+    </div>
   </div>
 </template>
 
@@ -56,10 +62,11 @@
 import api from '@/api'
 import Chart from './Chart'
 import Card from '@/components/Card/Card'
+import GeoChart from './Graphs/GeoChart'
 
 export default {
   name: 'Main',
-  components: { Card, Chart },
+  components: { Card, Chart, GeoChart },
   data() {
     return {
       global: {},
