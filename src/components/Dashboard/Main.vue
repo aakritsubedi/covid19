@@ -3,23 +3,28 @@
     <div class="date-info">
       <p>last Updated</p>
       <p>Wednesday April 15th 2020</p>
-      <h6 :title="myCountry.isp">
+      <span :title="myCountry.isp" class="mt-2">
         <i class="mr-1 fa fa-map-marker"></i>
-        <span class="">{{myCountry.city}},</span>
-        <span class="">{{myCountry.countryName}}</span>
+        <span class>{{myCountry.city}},</span>
+        <span class>{{myCountry.countryName}}</span>
         <span class="ml-2">({{myCountry.regionName}})</span>
-      </h6>
+      </span>
     </div>
 
     <div class="newrow country-select mt-10">
       <div class="col-xs-12">
-        <select v-model="selectedCountry" class="custom-select" @change="updateData()" id="country">
-          <option selected>Global</option>
+        <select v-model="selectedCountry" class="custom-select" @change="getDataFor()" id="country">
           <option v-for="country in countries" :key="country">{{ country }}</option>
         </select>
       </div>
     </div>
-    <p class="heading">Report of {{selectedCountry}}</p>
+    <div class="clearfix">
+      <p class="heading float-left">Report of {{selectedCountry}}</p>
+      <a @click.prevent="getGlobalData()" id="learn-more">
+        <i class="fa fa-globe"></i>
+        World Data
+      </a>
+    </div>
     <div class="card-group">
       <Card
         v-for="(data, index) in global"
@@ -64,9 +69,19 @@ export default {
       .fetchCountries()
       .then(data => data)
       .catch(error => console.log(error));
+
+    this.countries.unshift("Global");
   },
   methods: {
+    getDataFor: function() {
+      if (this.selectedCountry === "Global") {
+        this.getGlobalData();
+      } else {
+        this.updateData();
+      }
+    },
     updateData: async function() {
+      console.log(this.selectedCountry);
       this.global = await api
         .fetchByCountry(this.selectedCountry)
         .then(data => {
@@ -80,6 +95,26 @@ export default {
 
       this.lastUpdate = this.global["lastUpdate"];
 
+      this.makeChartData();
+    },
+    getGlobalData: async function() {
+      this.selectedCountry = "Global";
+      this.global = await api
+        .fetchAll()
+        .then(data => {
+          data["confirmed"]["subtitle"] = "Number of active cases";
+          data["recovered"]["subtitle"] = "Number of recoveries";
+          data["deaths"]["subtitle"] = "Number of deaths caused";
+
+          return data;
+        })
+        .catch(error => console.log(error));
+
+      this.lastUpdate = this.global["lastUpdate"];
+
+      this.makeChartData();
+    },
+    makeChartData: function() {
       delete this.global["lastUpdate"];
       const valueForChart = ["Corona"];
       valueForChart.push(this.global["deaths"].value);
@@ -91,3 +126,17 @@ export default {
   }
 };
 </script>
+
+<style scoped>
+#learn-more {
+  border: 1px solid #3a3a3a;
+  padding: 10px 15px;
+  text-decoration: none;
+  border-radius: 5px;
+  margin: 10px;
+  float: right;
+  -webkit-box-shadow: 5px 5px 3px 0px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 5px 5px 3px 0px rgba(0, 0, 0, 0.75);
+  box-shadow: 5px 5px 3px 0px rgba(0, 0, 0, 0.75);
+}
+</style>

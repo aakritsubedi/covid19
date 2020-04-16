@@ -96,7 +96,6 @@ export default {
   },
   created() {
     this.country = localStorage.getItem("countryName");
-    console.log(this.country);
   }
 };
 </script>
