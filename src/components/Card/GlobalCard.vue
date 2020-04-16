@@ -2,7 +2,7 @@
   <div class="newcard">
     <p class="title">{{ title }}</p>
     <div class="body" :class="extraClass">
-      <p class="data">{{ count }}</p>
+      <p class="data">{{ count | formatNum }}</p>
     </div>
   </div>
 </template>
@@ -33,6 +33,11 @@ export default {
   },
   created() {
     this.getClass();
+  },
+  filters: {
+    formatNum: function(value) {
+      return value.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')
+    }
   }
 };
 </script>
