@@ -38,7 +38,7 @@
           title="Hospital Info"
         >
           <div class="list-group__icon">
-            <i class="fa fa-eyedropper"></i>
+            <i class="fa fa-hospital-o"></i>
           </div>
           <p class="list-group__label">Hospital</p>
         </div>
@@ -69,7 +69,7 @@ import Covid19 from "@/components/Dashboard/Covid19";
 import Main from "@/components/Dashboard/Main";
 import Nepal from "@/components/Dashboard/Nepal";
 import Imp from "@/components/Dashboard/Imp";
-import Hospital from "@/components/Dashboard/GetTested";
+import Hospital from "@/components/Dashboard/HospitalList";
 import About from "@/components/Dashboard/About";
 import Map from "@/components/Dashboard/Map/MapContainer";
 
