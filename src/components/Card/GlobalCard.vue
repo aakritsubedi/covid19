@@ -1,8 +1,35 @@
 <template>
-  <div class="newcard">
-    <p class="title">{{ title }}</p>
-    <div class="body" :class="extraClass">
-      <p class="data">{{ count | formatNum }}</p>
+  <div class="card-group">
+    <div class="global-card">
+      <div class="global-card__top bg-warning">
+        <div class="label">Total Confirmed</div>
+        <div class="data">{{ allData.confirmed.total | formatNum}}</div>
+      </div>
+      <!-- <div class="hr-line"></div> -->
+      <div class="global-card__bottom">
+        <div class="label">New Confirmed</div>
+        <div class="data">{{ allData.confirmed.new | formatNum }}</div>
+      </div>
+    </div>
+    <div class="global-card">
+      <div class="global-card__top bg-danger">
+        <div class="label">Total Death</div>
+        <div class="data">{{ allData.deaths.total | formatNum }}</div>
+      </div>
+      <div class="global-card__bottom">
+        <div class="label">New Deaths</div>
+        <div class="data">{{ allData.deaths.total | formatNum }}</div>
+      </div>
+    </div>
+    <div class="global-card">
+      <div class="global-card__top bg-success">
+        <div class="label">Total Recovered</div>
+        <div class="data">{{ allData.recovered.total | formatNum  }}</div>
+      </div>
+      <div class="global-card__bottom">
+        <div class="label">New Recovered</div>
+        <div class="data">{{ allData.recovered.new | formatNum}}</div>
+      </div>
     </div>
   </div>
 </template>
@@ -10,33 +37,10 @@
 <script>
 export default {
   name: "Card",
-  props: ["title", "count"],
-  data() {
-    return {
-      extraClass: ''
-    };
-  },
-  methods: {
-    getClass() {
-      console.log(this.count);
-      
-      if(this.title.includes('Recover')){
-        this.extraClass = 'bg-success'
-      }
-      else if(this.title.includes('Death')){
-        this.extraClass = 'bg-danger'
-      }
-      else if(this.title.includes('Confirm')){
-        this.extraClass = 'bg-warning';
-      }
-    }
-  },
-  created() {
-    this.getClass();
-  },
+  props: ["allData"],
   filters: {
     formatNum: function(value) {
-      return value.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')
+      return value.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
     }
   }
 };

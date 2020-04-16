@@ -12,7 +12,7 @@
     </div>
 
     <div class="newrow country-select mt-10 f-j-center">
-      <div class="col-lg-10 col-xs-8">
+      <div class="col-lg-12 col-xs-12">
         <select
           v-model="selectedCountry"
           class="custom-select"
@@ -24,13 +24,13 @@
           }}</option>
         </select>
       </div>
-      <div class="col-lg-2 col-xs-4">
+      <!-- <div class="col-lg-2 col-xs-4">
         <a @click.prevent="getGlobalData()">
           <div class="custom-btn">
             <p><i class="fa fa-globe"></i> World Data</p>
           </div>
         </a>
-      </div>
+      </div> -->
     </div>
 
     <p class="heading">Report of {{ selectedCountry }}</p>
