@@ -12,6 +12,7 @@
     "core-js": "^3.6.4",
     "gsap": "^3.2.6",
     "vue": "^2.6.11",
+    "vue-axios-cors": "^1.0.1",
     "vue-google-charts": "^0.3.2",
     "vue-moment": "^4.1.0"
   },

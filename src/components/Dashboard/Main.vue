@@ -49,26 +49,9 @@ export default {
     };
   },
   async created() {
-    this.global = await api
-      .fetchAll()
-      .then(data => {
-        data["confirmed"]["subtitle"] = "Number of active cases";
-        data["recovered"]["subtitle"] = "Number of recoveries";
-        data["deaths"]["subtitle"] = "Number of deaths caused";
-
-        return data;
-      })
-      .catch(error => console.log(error));
-
-    this.lastUpdate = this.global["lastUpdate"];
-
-    delete this.global["lastUpdate"];
-    const valueForChart = ["Corona"];
-    valueForChart.push(this.global["deaths"].value);
-    valueForChart.push(this.global["recovered"].value);
-    valueForChart.push(this.global["confirmed"].value);
-
-    this.chartData.push(valueForChart);
+    let myCountry = await api.getInfoFromIp();
+    this.selectedCountry = myCountry.countryName;
+    this.updateData();
 
     this.countries = await api
       .fetchCountries()
@@ -80,9 +63,9 @@ export default {
       this.global = await api
         .fetchByCountry(this.selectedCountry)
         .then(data => {
-          data["confirmed"]["subtitle"] = "Number of active cases of COVID-19.";
-          data["recovered"]["subtitle"] = "Number of recoveries from COVID-19.";
-          data["deaths"]["subtitle"] = "Number of deaths caused by COVID-19.";
+          data["confirmed"]["subtitle"] = "Number of active cases";
+          data["recovered"]["subtitle"] = "Number of recoveries";
+          data["deaths"]["subtitle"] = "Number of deaths caused";
 
           return data;
         })
