@@ -3,7 +3,8 @@
     <div class="side-menu">
       <div class="list-group">
         <div
-          class="list-group__item list-group__item"
+          v-if="(country === 'Nepal')"
+          class="list-group__item"
           @click="(event) => setComponent(event, 'Map')"
           title="Nepal Statistics"
         >
@@ -84,13 +85,18 @@ export default {
   },
   data() {
     return {
-      component: "Main"
+      component: "Main",
+      country: ""
     };
   },
   methods: {
     setComponent: function(event, component) {
       this.component = component;
     }
+  },
+  created() {
+    this.country = localStorage.getItem("countryName");
+    console.log(this.country);
   }
 };
 </script>
