@@ -67,7 +67,6 @@
  <script>
 import Covid19 from "@/components/Dashboard/Covid19";
 import Main from "@/components/Dashboard/Main";
-import Nepal from "@/components/Dashboard/Nepal";
 import Imp from "@/components/Dashboard/Imp";
 import Hospital from "@/components/Dashboard/HospitalList";
 import About from "@/components/Dashboard/About";
@@ -77,7 +76,6 @@ export default {
   name: "Dashboard",
   components: {
     Main,
-    Nepal,
     Imp,
     Hospital,
     Covid19,

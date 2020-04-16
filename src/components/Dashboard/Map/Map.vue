@@ -1,11 +1,11 @@
 <template>
   <div @mouseenter="(event) => displayInfo(event,null)">
-    <h6>
+    <h5 :title="myCountry.isp">
         <i class="mr-1 fa fa-map-marker"></i>
         <span class="">{{myCountry.city}},</span>
         <span class="">{{myCountry.countryName}}</span>
         <span class="ml-2">({{myCountry.regionName}})</span>
-      </h6>
+      </h5>
     <div class="map">
       <svg
         id="nepalmap"

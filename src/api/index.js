@@ -2,7 +2,7 @@ import axios from "axios";
 
 const url = "https://covid19.mathdro.id/api";
 const geoUrl =
-  "http://api.ipstack.com/check?access_key=f484c55bad945f7600f90f105665acec";
+  "https://ipapi.co/json";
 
 export default {
   fetchAll: async () => {
@@ -70,13 +70,15 @@ export default {
       
       localStorage.setItem("countryName", info.country_name);
       localStorage.setItem("city", info.city);
-      localStorage.setItem("regionName", info.region_name);
+      localStorage.setItem("regionName", info.region);
+      localStorage.setItem("isp", info.ip+'-'+info.org);
     }
 
     return {
       countryName: localStorage.getItem('countryName'),
       city: localStorage.getItem('city'),
-      regionName: localStorage.getItem('regionName')
+      regionName: localStorage.getItem('regionName'),
+      isp: localStorage.getItem('isp')
     };
   },
 };

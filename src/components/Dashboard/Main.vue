@@ -3,7 +3,7 @@
     <div class="date-info">
       <p>last Updated</p>
       <p>Wednesday April 15th 2020</p>
-      <h6>
+      <h6 :title="myCountry.isp">
         <i class="mr-1 fa fa-map-marker"></i>
         <span class="">{{myCountry.city}},</span>
         <span class="">{{myCountry.countryName}}</span>
