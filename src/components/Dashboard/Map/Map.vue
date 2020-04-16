@@ -1,11 +1,11 @@
 <template>
-  <div @mouseenter="(event) => displayInfo(event,null)">
-    <h5 :title="myCountry.isp">
-        <i class="mr-1 fa fa-map-marker"></i>
-        <span class="">{{myCountry.city}},</span>
-        <span class="">{{myCountry.countryName}}</span>
-        <span class="ml-2">({{myCountry.regionName}})</span>
-      </h5>
+  <div @mouseenter="(event) => displayInfo(event, null)">
+    <h5 :title="myCountry.isp" style="padding-top:20px;font-size:18px">
+      <i class="mr-1 fa fa-map-marker"></i>
+      <span class="">{{ myCountry.city }},</span>
+      <span class="">{{ myCountry.countryName }}</span>
+      <span class="ml-2">({{ myCountry.regionName }})</span>
+    </h5>
     <div class="map">
       <svg
         id="nepalmap"
@@ -61,43 +61,43 @@
         />
       </svg>
     </div>
-    <Info :name="title" :position="position" :province="myCountry.regionName"/>
+    <Info :name="title" :position="position" :province="myCountry.regionName" />
   </div>
 </template>
 
 <script>
-import api from "@/api";
-import Info from "./ProvinceInfo";
+import api from '@/api'
+import Info from './ProvinceInfo'
 
 export default {
-  name: "NepalMap",
+  name: 'NepalMap',
   components: { Info },
   data() {
     return {
-      title: "",
+      title: '',
       position: {
         x: 0,
-        y: 0
+        y: 0,
       },
-      myCountry: {}
-    };
+      myCountry: {},
+    }
   },
   methods: {
     displayInfo: function(event, province) {
-      this.title = province;
-      this.position.x = event.x;
-      this.position.y = event.y;
-      event.target.classList.add("active");
+      this.title = province
+      this.position.x = event.x
+      this.position.y = event.y
+      event.target.classList.add('active')
     },
     removeInfo: function(event) {
-      this.title=null;
-      event.target.classList.remove("active");
-    }
+      this.title = null
+      event.target.classList.remove('active')
+    },
   },
   async created() {
-    this.myCountry = await api.getInfoFromIp();
-  }
-};
+    this.myCountry = await api.getInfoFromIp()
+  },
+}
 </script>
 
 <style scoped>
@@ -105,7 +105,7 @@ path {
   fill: rgb(102, 158, 110);
 }
 path.active {
-  fill:rgb(195, 226, 199);
+  fill: rgb(195, 226, 199);
 }
 path {
   cursor: pointer;

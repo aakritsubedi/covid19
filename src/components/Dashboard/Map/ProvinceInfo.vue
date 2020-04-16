@@ -1,15 +1,13 @@
 <template>
   <div>
     <div v-show="name" id="map-hover-info" class="popup-menu">
-      <div class="data-group">
+      <div style="margin-bottom:10px">
         <p class="label">Province</p>
         <p class="data text-capitalize">{{ name }}</p>
       </div>
-      <div class="body">
-        <div class="data-group">
-          <p class="label">Total No. of Hospitals</p>
-          <p class="data">{{ count }}</p>
-        </div>
+      <div>
+        <p class="label">Total No. of Hospitals</p>
+        <p class="data">{{ count }}</p>
       </div>
     </div>
   </div>
@@ -17,102 +15,86 @@
 
 <script>
 export default {
-  name: "ProvinceInfo",
-  props: ["name", "position"],
+  name: 'ProvinceInfo',
+  props: ['name', 'position'],
   data() {
     return {
       count: 0,
       hospitalData: [
         {
           province1: {
-            total: 52
+            total: 52,
           },
           province2: {
-            total: 20
+            total: 20,
           },
           bagmati: {
-            total: 242
+            total: 242,
           },
           gandaki: {
-            total: 46
+            total: 46,
           },
           province5: {
-            total: 33
+            total: 33,
           },
           karnali: {
-            total: 7
+            total: 7,
           },
           sudurpashchim: {
-            total: 24
-          }
-        }
-      ]
-    };
+            total: 24,
+          },
+        },
+      ],
+    }
   },
   mounted() {
-    const map = document.querySelector("#map-hover-info");
-    map.style.display = "none";
+    const map = document.querySelector('#map-hover-info')
+    map.style.display = 'none'
   },
   updated() {
-    this.count = this.name ? this.hospitalData[0][this.name].total : 0;
-    const map = document.querySelector("#map-hover-info");
+    this.count = this.name ? this.hospitalData[0][this.name].total : 0
+    const map = document.querySelector('#map-hover-info')
     if (this.name !== null) {
-      map.style.display = "block";
+      map.style.display = 'block'
     }
 
-    map.style.top = this.position.y - 150 + "px";
-    map.style.left = this.position.x - 50 + "px";
-  }
-};
+    map.style.top = this.position.y - 150 + 'px'
+    map.style.left = this.position.x - 50 + 'px'
+  },
+}
 </script>
 
 <style scoped>
 #map-hover-info {
   position: absolute;
-  border-radius: 10px;
+  border-radius: 6px;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  -webkit-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
-  -moz-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
-  box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
 }
 
 .popup-menu {
-  background-color: #2c3335;
+  background-color: white;
   -webkit-box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-  padding: 10px 15px;
+  box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22);
+  padding: 15px 20px;
+  color: #3a3a3a;
+  text-align: left;
 }
 
 .popup-menu p {
   margin: 0px;
 }
 
-.popup-menu .body {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-}
-
-.popup-menu .body .data-group {
-  margin-right: 15px;
-  margin-bottom: 0px;
-}
-
-.popup-menu .data-group {
-  margin-bottom: 20px;
-}
-
 .popup-menu .label {
-  color: #fff;
   font-size: 13px;
+  color: #7c7c7c;
 }
 
 .popup-menu .data {
-  color: #fff;
-  font-size: 17px;
+  font-size: 19px;
+  font-weight: 500;
 }
 .hospital-info {
   padding: 10px;

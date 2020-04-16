@@ -1,30 +1,40 @@
 <template>
   <div class="main-container">
     <div class="date-info">
-      <p>last Updated</p>
-      <p>Wednesday April 15th 2020</p>
+      <p>last Updated: <span> Wednesday April 15th 2020</span></p>
+
       <span :title="myCountry.isp" class="mt-2">
         <i class="mr-1 fa fa-map-marker"></i>
-        <span class>{{myCountry.city}},</span>
-        <span class>{{myCountry.countryName}}</span>
-        <span class="ml-2">({{myCountry.regionName}})</span>
+        <span class>{{ myCountry.city }},</span>
+        <span class>{{ myCountry.countryName }}</span>
+        <span class="ml-2">({{ myCountry.regionName }})</span>
       </span>
     </div>
 
-    <div class="newrow country-select mt-10">
-      <div class="col-xs-12">
-        <select v-model="selectedCountry" class="custom-select" @change="getDataFor()" id="country">
-          <option v-for="country in countries" :key="country">{{ country }}</option>
+    <div class="newrow country-select mt-10 f-j-center">
+      <div class="col-lg-10 col-xs-8">
+        <select
+          v-model="selectedCountry"
+          class="custom-select"
+          @change="getDataFor()"
+          id="country"
+        >
+          <option v-for="country in countries" :key="country">{{
+            country
+          }}</option>
         </select>
       </div>
+      <div class="col-lg-2 col-xs-4">
+        <a @click.prevent="getGlobalData()">
+          <div class="custom-btn">
+            <p><i class="fa fa-globe"></i> World Data</p>
+          </div>
+        </a>
+      </div>
     </div>
-    <div class="clearfix">
-      <p class="heading float-left">Report of {{selectedCountry}}</p>
-      <a @click.prevent="getGlobalData()" id="learn-more">
-        <i class="fa fa-globe"></i>
-        World Data
-      </a>
-    </div>
+
+    <p class="heading">Report of {{ selectedCountry }}</p>
+
     <div class="card-group">
       <Card
         v-for="(data, index) in global"
@@ -43,88 +53,88 @@
 </template>
 
 <script>
-import api from "@/api";
-import Chart from "./Chart";
-import Card from "@/components/Card/Card";
+import api from '@/api'
+import Chart from './Chart'
+import Card from '@/components/Card/Card'
 
 export default {
-  name: "Main",
+  name: 'Main',
   components: { Card, Chart },
   data() {
     return {
       global: {},
-      lastUpdate: "",
-      chartData: [["Corona Report", "Deaths", "Recovered", "Confirmed"]],
-      selectedCountry: "Global",
+      lastUpdate: '',
+      chartData: [['Corona Report', 'Deaths', 'Recovered', 'Confirmed']],
+      selectedCountry: 'Global',
       countries: [],
-      myCountry: {}
-    };
+      myCountry: {},
+    }
   },
   async created() {
-    this.myCountry = await api.getInfoFromIp();
-    this.selectedCountry = this.myCountry.countryName;
-    this.updateData();
+    this.myCountry = await api.getInfoFromIp()
+    this.selectedCountry = this.myCountry.countryName
+    this.updateData()
 
     this.countries = await api
       .fetchCountries()
-      .then(data => data)
-      .catch(error => console.log(error));
+      .then((data) => data)
+      .catch((error) => console.log(error))
 
-    this.countries.unshift("Global");
+    this.countries.unshift('Global')
   },
   methods: {
     getDataFor: function() {
-      if (this.selectedCountry === "Global") {
-        this.getGlobalData();
+      if (this.selectedCountry === 'Global') {
+        this.getGlobalData()
       } else {
-        this.updateData();
+        this.updateData()
       }
     },
     updateData: async function() {
-      console.log(this.selectedCountry);
+      console.log(this.selectedCountry)
       this.global = await api
         .fetchByCountry(this.selectedCountry)
-        .then(data => {
-          data["confirmed"]["subtitle"] = "Number of active cases";
-          data["recovered"]["subtitle"] = "Number of recoveries";
-          data["deaths"]["subtitle"] = "Number of deaths caused";
+        .then((data) => {
+          data['confirmed']['subtitle'] = 'Number of active cases'
+          data['recovered']['subtitle'] = 'Number of recoveries'
+          data['deaths']['subtitle'] = 'Number of deaths caused'
 
-          return data;
+          return data
         })
-        .catch(error => console.log(error));
+        .catch((error) => console.log(error))
 
-      this.lastUpdate = this.global["lastUpdate"];
+      this.lastUpdate = this.global['lastUpdate']
 
-      this.makeChartData();
+      this.makeChartData()
     },
     getGlobalData: async function() {
-      this.selectedCountry = "Global";
+      this.selectedCountry = 'Global'
       this.global = await api
         .fetchAll()
-        .then(data => {
-          data["confirmed"]["subtitle"] = "Number of active cases";
-          data["recovered"]["subtitle"] = "Number of recoveries";
-          data["deaths"]["subtitle"] = "Number of deaths caused";
+        .then((data) => {
+          data['confirmed']['subtitle'] = 'Number of active cases'
+          data['recovered']['subtitle'] = 'Number of recoveries'
+          data['deaths']['subtitle'] = 'Number of deaths caused'
 
-          return data;
+          return data
         })
-        .catch(error => console.log(error));
+        .catch((error) => console.log(error))
 
-      this.lastUpdate = this.global["lastUpdate"];
+      this.lastUpdate = this.global['lastUpdate']
 
-      this.makeChartData();
+      this.makeChartData()
     },
     makeChartData: function() {
-      delete this.global["lastUpdate"];
-      const valueForChart = ["Corona"];
-      valueForChart.push(this.global["deaths"].value);
-      valueForChart.push(this.global["recovered"].value);
-      valueForChart.push(this.global["confirmed"].value);
-      this.chartData = [["Corona Report", "Deaths", "Recovered", "Confirmed"]];
-      this.chartData.push(valueForChart);
-    }
-  }
-};
+      delete this.global['lastUpdate']
+      const valueForChart = ['Corona']
+      valueForChart.push(this.global['deaths'].value)
+      valueForChart.push(this.global['recovered'].value)
+      valueForChart.push(this.global['confirmed'].value)
+      this.chartData = [['Corona Report', 'Deaths', 'Recovered', 'Confirmed']]
+      this.chartData.push(valueForChart)
+    },
+  },
+}
 </script>
 
 <style scoped>
@@ -133,10 +143,5 @@ export default {
   padding: 10px 15px;
   text-decoration: none;
   border-radius: 5px;
-  margin: 10px;
-  float: right;
-  -webkit-box-shadow: 5px 5px 3px 0px rgba(0, 0, 0, 0.75);
-  -moz-box-shadow: 5px 5px 3px 0px rgba(0, 0, 0, 0.75);
-  box-shadow: 5px 5px 3px 0px rgba(0, 0, 0, 0.75);
 }
 </style>
