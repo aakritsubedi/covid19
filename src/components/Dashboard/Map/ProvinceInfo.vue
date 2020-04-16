@@ -25,67 +25,25 @@ export default {
       hospitalData: [
         {
           province1: {
-            total: 52,
-            hospital: [
-              { name: "Mechi Zone Hospital", contact: "023-520172" },
-              { name: "Koshi Zone Hospital", contact: "	021-570103" },
-              { name: "Birat Medical College", contact: "021-421063" },
-              { name: "Biratnagar Hospital", contact: "021-571042" }
-            ]
+            total: 52
           },
           province2: {
-            total: 20,
-            hospital: [
-              { name: "Mechi Zone Hospital", contact: "023-520172" },
-              { name: "Koshi Zone Hospital", contact: "	021-570103" },
-              { name: "Birat Medical College", contact: "021-421063" },
-              { name: "Biratnagar Hospital", contact: "021-571042" }
-            ]
+            total: 20
           },
           bagmati: {
-            total: 242,
-            hospital: [
-              { name: "Mechi Zone Hospital", contact: "023-520172" },
-              { name: "Koshi Zone Hospital", contact: "	021-570103" },
-              { name: "Birat Medical College", contact: "021-421063" },
-              { name: "Biratnagar Hospital", contact: "021-571042" }
-            ]
+            total: 242
           },
           gandaki: {
-            total: 46,
-            hospital: [
-              { name: "Mechi Zone Hospital", contact: "023-520172" },
-              { name: "Koshi Zone Hospital", contact: "	021-570103" },
-              { name: "Birat Medical College", contact: "021-421063" },
-              { name: "Biratnagar Hospital", contact: "021-571042" }
-            ]
+            total: 46
           },
           province5: {
-            total: 33,
-            hospital: [
-              { name: "Mechi Zone Hospital", contact: "023-520172" },
-              { name: "Koshi Zone Hospital", contact: "	021-570103" },
-              { name: "Birat Medical College", contact: "021-421063" },
-              { name: "Biratnagar Hospital", contact: "021-571042" }
-            ]
+            total: 33
           },
           karnali: {
-            total: 7,
-            hospital: [
-              { name: "Mechi Zone Hospital", contact: "023-520172" },
-              { name: "Koshi Zone Hospital", contact: "	021-570103" },
-              { name: "Birat Medical College", contact: "021-421063" },
-              { name: "Biratnagar Hospital", contact: "021-571042" }
-            ]
+            total: 7
           },
           sudurpashchim: {
-            total: 24,
-            hospital: [
-              { name: "Mechi Zone Hospital", contact: "023-520172" },
-              { name: "Koshi Zone Hospital", contact: "	021-570103" },
-              { name: "Birat Medical College", contact: "021-421063" },
-              { name: "Biratnagar Hospital", contact: "021-571042" }
-            ]
+            total: 24
           }
         }
       ]

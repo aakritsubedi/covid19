@@ -4,7 +4,7 @@
       <div class="list-group">
         <div
           class="list-group__item list-group__item"
-          @click="(event) => setComponent(event, 'Nepal')"
+          @click="(event) => setComponent(event, 'Map')"
           title="Nepal Statistics"
         >
           <div class="list-group__icon">
@@ -34,7 +34,7 @@
         </div>
         <div
           class="list-group__item"
-          @click="(event) => setComponent(event, 'Map')"
+          @click="(event) => setComponent(event, 'Hospital')"
           title="Hospital Info"
         >
           <div class="list-group__icon">
@@ -69,7 +69,7 @@ import Covid19 from "@/components/Dashboard/Covid19";
 import Main from "@/components/Dashboard/Main";
 import Nepal from "@/components/Dashboard/Nepal";
 import Imp from "@/components/Dashboard/Imp";
-import GetTested from "@/components/Dashboard/GetTested";
+import Hospital from "@/components/Dashboard/GetTested";
 import About from "@/components/Dashboard/About";
 import Map from "@/components/Dashboard/Map/MapContainer";
 
@@ -79,14 +79,14 @@ export default {
     Main,
     Nepal,
     Imp,
-    GetTested,
+    Hospital,
     Covid19,
     About,
     Map
   },
   data() {
     return {
-      component: "Nepal"
+      component: "Main"
     };
   },
   methods: {

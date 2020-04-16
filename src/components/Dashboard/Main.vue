@@ -3,6 +3,12 @@
     <div class="date-info">
       <p>last Updated</p>
       <p>Wednesday April 15th 2020</p>
+      <h6>
+        <i class="mr-1 fa fa-map-marker"></i>
+        <span class="">{{myCountry.city}},</span>
+        <span class="">{{myCountry.countryName}}</span>
+        <span class="ml-2">({{myCountry.regionName}})</span>
+      </h6>
     </div>
 
     <div class="newrow country-select mt-10">
@@ -31,7 +37,7 @@
   </div>
 </template>
 
-// <script>
+<script>
 import api from "@/api";
 import Chart from "./Chart";
 import Card from "@/components/Card/Card";
@@ -45,12 +51,13 @@ export default {
       lastUpdate: "",
       chartData: [["Corona Report", "Deaths", "Recovered", "Confirmed"]],
       selectedCountry: "Global",
-      countries: []
+      countries: [],
+      myCountry: {}
     };
   },
   async created() {
-    let myCountry = await api.getInfoFromIp();
-    this.selectedCountry = myCountry.countryName;
+    this.myCountry = await api.getInfoFromIp();
+    this.selectedCountry = this.myCountry.countryName;
     this.updateData();
 
     this.countries = await api

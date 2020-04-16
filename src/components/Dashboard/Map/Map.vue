@@ -1,5 +1,11 @@
 <template>
   <div @mouseenter="(event) => displayInfo(event,null)">
+    <h6>
+        <i class="mr-1 fa fa-map-marker"></i>
+        <span class="">{{myCountry.city}},</span>
+        <span class="">{{myCountry.countryName}}</span>
+        <span class="ml-2">({{myCountry.regionName}})</span>
+      </h6>
     <div class="map">
       <svg
         id="nepalmap"
@@ -55,11 +61,12 @@
         />
       </svg>
     </div>
-    <Info :name="title" :position="position" />
+    <Info :name="title" :position="position" :province="myCountry.regionName"/>
   </div>
 </template>
 
 <script>
+import api from "@/api";
 import Info from "./ProvinceInfo";
 
 export default {
@@ -71,7 +78,8 @@ export default {
       position: {
         x: 0,
         y: 0
-      }
+      },
+      myCountry: {}
     };
   },
   methods: {
@@ -85,6 +93,9 @@ export default {
       this.title=null;
       event.target.classList.remove("active");
     }
+  },
+  async created() {
+    this.myCountry = await api.getInfoFromIp();
   }
 };
 </script>
