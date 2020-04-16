@@ -50,9 +50,9 @@
           title="About Covid19"
         >
           <div class="list-group__icon">
-            <i class="fa fa-share-alt"></i>
+            <i class="fa fa-info"></i>
           </div>
-          <p class="list-group__label">About</p>
+          <p class="list-group__label">Info</p>
         </div>
       </div>
     </div>
