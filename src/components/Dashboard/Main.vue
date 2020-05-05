@@ -1,7 +1,10 @@
 <template>
   <div class="main-container">
     <div class="date-info">
-      <p>last Updated: <span> {{lastUpdate | formatDate}}</span></p>
+      <p>
+        last Updated:
+        <span>{{lastUpdate | formatDate }}</span>
+      </p>
 
       <span :title="myCountry.isp" class="mt-2">
         <i class="mr-1 fa fa-map-marker"></i>
@@ -13,24 +16,14 @@
 
     <div class="newrow country-select mt-10 f-j-center">
       <div class="col-lg-12 col-xs-12">
-        <select
-          v-model="selectedCountry"
-          class="custom-select"
-          @change="getDataFor()"
-          id="country"
-        >
-          <option v-for="country in countries" :key="country">{{
+        <select v-model="country" class="custom-select" @change="getDataFor()" id="country">
+          <option v-for="country in countries" :key="country">
+            {{
             country
-          }}</option>
+            }}
+          </option>
         </select>
       </div>
-      <!-- <div class="col-lg-2 col-xs-4">
-        <a @click.prevent="getGlobalData()">
-          <div class="custom-btn">
-            <p><i class="fa fa-globe"></i> World Data</p>
-          </div>
-        </a>
-      </div> -->
     </div>
 
     <p class="heading">Report of {{ selectedCountry }}</p>
@@ -49,7 +42,7 @@
         <Chart :chartData="chartData" height="300" width="100%" />
       </div>
     </div>
-    <hr>
+    <hr />
     <div class="newrow">
       <div class="col-xs-12">
         <GeoChart :chartData="chartData" height="300" width="100%" />
@@ -59,99 +52,60 @@
 </template>
 
 <script>
-import api from '@/api'
-import Chart from './Chart'
-import Card from '@/components/Card/Card'
+import Chart from "./Chart";
+import Card from "@/components/Card/Card";
 import GeoChart from './Graphs/GeoChart'
 
+import { mapGetters, mapActions } from "vuex";
+
 export default {
-  name: 'Main',
+  name: "Main",
   components: { Card, Chart, GeoChart },
-  data() {
-    return {
-      global: {},
-      lastUpdate: '',
-      chartData: [['Corona Report', 'Deaths', 'Recovered', 'Confirmed']],
-      selectedCountry: 'Global',
-      countries: [],
-      myCountry: {},
-    }
-  },
   async created() {
-    this.myCountry = await api.getInfoFromIp()
-    this.selectedCountry = this.myCountry.countryName
-    this.updateData()
-
-    this.countries = await api
-      .fetchCountries()
-      .then((data) => data)
-      .catch((error) => console.log(error))
-
-    this.countries.unshift('Global')
+    this.init();
   },
   methods: {
-    getDataFor: function() {
-      if (this.selectedCountry === 'Global') {
-        this.getGlobalData()
-      } else {
-        this.updateData()
+    ...mapActions(["init", "updateData", "getDataFor"]),
+    reRender: function(event) {
+      this.selectedCountry = event.target.value;
+      this.getDataFor();
+    }
+  },
+  computed: {
+    country: {
+      get() {
+        return this.$store.getters.selectedCountry;
+      },
+      set(value) {
+        this.$store.commit("setSelectedCountry", value);
       }
     },
-    updateData: async function() {
-      console.log(this.selectedCountry)
-      this.global = await api
-        .fetchByCountry(this.selectedCountry)
-        .then((data) => {
-          data['confirmed']['subtitle'] = 'Number of active cases'
-          data['recovered']['subtitle'] = 'Number of recoveries'
-          data['deaths']['subtitle'] = 'Number of deaths caused'
-
-          return data
-        })
-        .catch((error) => console.log(error))
-
-      this.lastUpdate = this.global['lastUpdate']
-
-      this.makeChartData()
-    },
-    getGlobalData: async function() {
-      this.selectedCountry = 'Global'
-      this.global = await api
-        .fetchAll()
-        .then((data) => {
-          data['confirmed']['subtitle'] = 'Number of active cases'
-          data['recovered']['subtitle'] = 'Number of recoveries'
-          data['deaths']['subtitle'] = 'Number of deaths caused'
-
-          return data
-        })
-        .catch((error) => console.log(error))
-
-      this.lastUpdate = this.global['lastUpdate']
-
-      this.makeChartData()
-    },
-    makeChartData: function() {
-      delete this.global['lastUpdate']
-      const valueForChart = ['Corona']
-      valueForChart.push(this.global['deaths'].value)
-      valueForChart.push(this.global['recovered'].value)
-      valueForChart.push(this.global['confirmed'].value)
-      this.chartData = [['Corona Report', 'Deaths', 'Recovered', 'Confirmed']]
-      this.chartData.push(valueForChart)
-    },
+    ...mapGetters([
+      "global",
+      "lastUpdate",
+      "selectedCountry",
+      "countries",
+      "myCountry",
+      "chartData"
+    ])
   },
   filters: {
-    formatDate: (value) => {
-      const updatedDate = new Date(value)
-      const ye = new Intl.DateTimeFormat('en', { year: 'numeric' }).format(updatedDate)
-      const mo = new Intl.DateTimeFormat('en', { month: 'short' }).format(updatedDate)
-      const da = new Intl.DateTimeFormat('en', { day: '2-digit' }).format(updatedDate)
+    formatDate: value => {
+      const updatedDate = new Date(value);
+      const year = new Intl.DateTimeFormat("en", { year: "numeric" }).format(
+        updatedDate
+      );
+      const months = new Intl.DateTimeFormat("en", { month: "short" }).format(
+        updatedDate
+      );
+      const date = new Intl.DateTimeFormat("en", { day: "2-digit" }).format(
+        updatedDate
+      );
 
-      return `${da}-${mo}-${ye}`;
-    } 
+      return `${date}-${months}-${year}`;
+    }
   }
-}
+};
 </script>
 
 <style scoped>
