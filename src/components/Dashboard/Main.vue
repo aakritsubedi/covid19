@@ -1,7 +1,7 @@
 <template>
   <div class="main-container">
     <div class="date-info">
-      <p>last Updated: <span> Wednesday April 15th 2020</span></p>
+      <p>last Updated: <span> {{lastUpdate | formatDate}}</span></p>
 
       <span :title="myCountry.isp" class="mt-2">
         <i class="mr-1 fa fa-map-marker"></i>
@@ -141,6 +141,16 @@ export default {
       this.chartData.push(valueForChart)
     },
   },
+  filters: {
+    formatDate: (value) => {
+      const updatedDate = new Date(value)
+      const ye = new Intl.DateTimeFormat('en', { year: 'numeric' }).format(updatedDate)
+      const mo = new Intl.DateTimeFormat('en', { month: 'short' }).format(updatedDate)
+      const da = new Intl.DateTimeFormat('en', { day: '2-digit' }).format(updatedDate)
+
+      return `${da}-${mo}-${ye}`;
+    } 
+  }
 }
 </script>
 
