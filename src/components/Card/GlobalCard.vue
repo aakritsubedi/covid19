@@ -35,9 +35,15 @@
 </template>
 
 <script>
+import {mapGetters} from 'vuex';
+
 export default {
   name: "Card",
-  props: ["allData"],
+  computed:{
+    ...mapGetters({
+      allData: "theGlobal"
+    })
+  },  
   filters: {
     formatNum: function(value) {
       return value.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");

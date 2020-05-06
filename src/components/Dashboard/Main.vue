@@ -45,7 +45,7 @@
     <hr />
     <div class="newrow">
       <div class="col-xs-12">
-        <GeoChart :chartData="chartData" height="300" width="100%" />
+        <GeoChart height="300" width="100%" />
       </div>
     </div>
   </div>
