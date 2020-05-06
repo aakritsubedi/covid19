@@ -66,15 +66,11 @@ export default {
   },
   methods: {
     ...mapActions(["init", "updateData", "getDataFor"]),
-    reRender: function(event) {
-      this.selectedCountry = event.target.value;
-      this.getDataFor();
-    }
   },
   computed: {
     country: {
       get() {
-        return this.$store.getters.selectedCountry;
+        return this.selectedCountry;
       },
       set(value) {
         this.$store.commit("setSelectedCountry", value);
@@ -91,18 +87,9 @@ export default {
   },
   filters: {
     formatDate: value => {
-      const updatedDate = new Date(value);
-      const year = new Intl.DateTimeFormat("en", { year: "numeric" }).format(
-        updatedDate
-      );
-      const months = new Intl.DateTimeFormat("en", { month: "short" }).format(
-        updatedDate
-      );
-      const date = new Intl.DateTimeFormat("en", { day: "2-digit" }).format(
-        updatedDate
-      );
-
-      return `${date}-${months}-${year}`;
+      const option = {year: 'numeric', month: 'short', day: '2-digit' };
+      const newDate = new Intl.DateTimeFormat("en", option).format(new Date(value))
+      return newDate
     }
   }
 };

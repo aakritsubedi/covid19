@@ -63,14 +63,11 @@ const actions = {
   },
   async getGlobalData({ dispatch, commit }) {
     let global = await api.fetchAll();
-    console.log(global);
     
     global["confirmed"]["subtitle"] = "Number of active cases";
     global["recovered"]["subtitle"] = "Number of recoveries";
     global["deaths"]["subtitle"] = "Number of deaths caused";
 
-
-    
     commit('setLastUpdatedDate', global.lastUpdate);
     commit("setGlobal", global);
     dispatch('makeChartData');
