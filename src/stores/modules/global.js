@@ -1,13 +1,13 @@
-import api from "../../api"
+import api from "@/api"
 
 const state = {
-    chartData: [["Country", "Confirmed", "Deaths"]],
-    global: {}
+    globalChartData: [["Country", "Confirmed", "Deaths"]],
+    theGlobal: {}
 };
 
 const getters = {
-  global: state => state.global,
-  chartData: state => state.chartData
+  theGlobal: state => state.theGlobal,
+  globalChartData: state => state.globalChartData
 };
 
 const actions = {
@@ -15,18 +15,18 @@ const actions = {
     const res = await api.countryData()
 
     commit('globalData', res.countries.data.Global);
-    commit('chartData', res.countries.data.Countries);
+    commit('globalChartData', res.countries.data.Countries);
    
   }
 };
 
 const mutations = {
-    globalData: (state, newData) => state.global = {
+    globalData: (state, newData) => state.theGlobal = {
         recovered: { total: newData.TotalRecovered, new: newData.NewRecovered },
         confirmed: { total: newData.TotalConfirmed, new: newData.NewConfirmed },
         deaths: { total: newData.TotalDeaths, new: newData.NewDeaths }
       },
-    chartData: (state, data) => {
+    globalChartData: (state, data) => {
         for (let info in data) {
             let individual = [];
             individual.push(
@@ -34,7 +34,7 @@ const mutations = {
               data[info].TotalConfirmed,
               data[info].TotalDeaths
             );
-            state.chartData.push(individual);
+            state.globalChartData.push(individual);
           }
     }
 };

@@ -4,10 +4,10 @@
       <i class="fa fa-globe"></i>
       Global Record
     </h2>
-    <Card :allData="global" />
+    <Card />
     <GChart
       :settings="{packages: ['geochart'], mapsApiKey: 'AIzaSyDtbLwdEwBQgaBfgSKxR853Yz82FNCfQs4'}"
-      :data="chartData"
+      :data="globalChartData"
       :options="chartOptions"
       :createChart="(el, google) => new google.visualization.GeoChart(el)"
       @ready="onChartReady"
@@ -27,7 +27,7 @@ export default{
      ...mapActions(["getGlobalData"])
    },
    computed: {
-     ...mapGetters(["global", "chartData"])
+     ...mapGetters(["theGlobal", "globalChartData"])
    },
    created() {
      this.getGlobalData();
