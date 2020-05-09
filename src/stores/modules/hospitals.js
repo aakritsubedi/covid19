@@ -22,7 +22,6 @@ const actions = {
         objArray[i - 1][key] = array[i][k];
       }
     }
-    console.log(objArray);
     
     commit("setHospitals", objArray);
   }
