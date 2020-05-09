@@ -1,8 +1,7 @@
 import axios from "axios";
 
 const url = "https://covid19.mathdro.id/api";
-const geoUrl =
-  "https://ipapi.co/json";
+const geoUrl = "https://ipapi.co/json";
 
 export default {
   fetchAll: async () => {
@@ -57,7 +56,11 @@ export default {
     }
   },
   getInfoFromIp: async () => {
-    if (!("countryName" in localStorage) || !("regionName" in localStorage) || !("city" in localStorage)) {
+    if (
+      !("countryName" in localStorage) ||
+      !("regionName" in localStorage) ||
+      !("city" in localStorage)
+    ) {
       const info = await axios
         .get(geoUrl, {
           headers: {
@@ -67,28 +70,38 @@ export default {
         })
         .then((data) => data.data)
         .catch((error) => console.log(error));
-      
+
       localStorage.setItem("countryName", info.country_name);
       localStorage.setItem("city", info.city);
       localStorage.setItem("regionName", info.region);
-      localStorage.setItem("isp", info.ip+'-'+info.org);
+      localStorage.setItem("isp", info.ip + "-" + info.org);
     }
 
     return {
-      countryName: localStorage.getItem('countryName'),
-      city: localStorage.getItem('city'),
-      regionName: localStorage.getItem('regionName'),
-      isp: localStorage.getItem('isp')
+      countryName: localStorage.getItem("countryName"),
+      city: localStorage.getItem("city"),
+      regionName: localStorage.getItem("regionName"),
+      isp: localStorage.getItem("isp"),
     };
   },
   countryData: async () => {
     const url = "https://api.covid19api.com/summary";
     try {
-      let countries = await axios.get(url).then(data => data );
+      let countries = await axios.get(url).then((data) => data);
 
       return { countries };
     } catch (error) {
       return error;
     }
-  }
+  },
+  fetchHospital: async () => {
+    const url = "http://localhost:9091/data/HospitalData";
+    try {
+      let hospitals = await axios.get(url);
+
+      return hospitals.data;
+    } catch (error) {
+      return error;
+    }
+  },
 };
