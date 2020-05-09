@@ -86,22 +86,14 @@ export default {
   },
   countryData: async () => {
     const url = "https://api.covid19api.com/summary";
-    try {
-      let countries = await axios.get(url).then((data) => data);
+    let countries = await axios.get(url);
 
-      return { countries };
-    } catch (error) {
-      throw error;
-    }
+    return countries.data;
   },
   fetchHospital: async () => {
     const url = "http://localhost:9091/data/HospitalData";
-    try {
-      let hospitals = await axios.get(url);
+    let hospitals = await axios.get(url);
 
-      return hospitals.data;
-    } catch (error) {
-      throw error;
-    }
+    return hospitals.data;
   },
 };
