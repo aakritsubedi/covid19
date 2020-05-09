@@ -1,0 +1,21 @@
+version: "3"
+
+services:
+    frontend:
+        container_name: test-frontend
+        build: 
+            context: ./
+            dockerfile: Dockerfile
+        image: covid/test-frontend
+        ports: 
+            - "9090:8080"
+    
+    backend:
+        container_name: test-backend
+        build: 
+            context: ./covid-back
+            dockerfile: Dockerfile
+        image: covid/test-backend
+        ports: 
+            - "9091:9091"
+    

@@ -89,7 +89,7 @@ async function init(type) {
   }else {
     return
   }
-  const content = await readFile('src/api/credentials.json')
+  const content = await readFile('util/credentials.json')
 
   const data = await authorize(JSON.parse(content), callback, token_path);
   return data
@@ -114,13 +114,13 @@ async function fetchData(auth) {
       } else {
         console.log('No data found.');
       }
-  
+
   } catch (e) {
     //handle error
     throw e;
   }
   return listOfHospitals;
-  
+
 }
 
 /**
@@ -137,7 +137,7 @@ async function listFiles(auth) {
         pageSize: 10,
         fields: 'nextPageToken, files(id, name)',
       });
-    
+
       const files = res.data.files;
       if (files.length) {
         listOfFiles = files.map((file) => {
@@ -161,6 +161,7 @@ async function generateDriveToken(){
 async function generateSheetToken(){
   await init("sheet");
 }
+
 /**
  * 
  * @param {string} filename get data from drive spreadsheet
@@ -175,3 +176,4 @@ async function getData(filename) {
   return await init("sheet")
 }
 
+module.exports = {getData}
