@@ -48,35 +48,25 @@
 </template>
 
 <script>
-import api from "@/api";
+import { mapGetters, mapActions } from "vuex";
 
 export default {
   name: "GetTested",
   data() {
     return {
-      search: "",
-      hospitals: []
+      search: ""
     };
   },
   methods: {
-    convertToJSON: array => {
-      var objArray = [];
-      for (var i = 1; i < array.length; i++) {
-        objArray[i - 1] = {};
-        for (var k = 0; k < array[0].length && k < array[i].length; k++) {
-          var key = array[0][k];
-          objArray[i - 1][key] = array[i][k];
-        }
-      }
-
-      return objArray;
-    }
+    ...mapActions(["getHospitals"])
   },
   async created() {
-    const hospitals = await api.fetchHospital();
-    this.hospitals = await this.convertToJSON(hospitals);
+    await this.getHospitals();
+    console.log(this.hospitals);
+    
   },
   computed: {
+    ...mapGetters(["hospitals"]),
     filterHospital: function() {
       return this.hospitals.filter(hospital => {
         return hospital.name.match(this.search);

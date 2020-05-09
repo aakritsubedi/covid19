@@ -91,7 +91,7 @@ export default {
 
       return { countries };
     } catch (error) {
-      return error;
+      throw error;
     }
   },
   fetchHospital: async () => {
@@ -101,7 +101,7 @@ export default {
 
       return hospitals.data;
     } catch (error) {
-      return error;
+      throw error;
     }
   },
 };
