@@ -24,13 +24,13 @@ export default{
    name: "GeoChart",
    components: { GChart, Card },
    methods: {
-     ...mapActions(["getGlobalData"])
+     ...mapActions(["getTheGlobalData"])
    },
    computed: {
      ...mapGetters(["theGlobal", "globalChartData"])
    },
    created() {
-     this.getGlobalData();
+     this.getTheGlobalData();
    },
 }
 </script>

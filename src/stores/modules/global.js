@@ -11,11 +11,10 @@ const getters = {
 };
 
 const actions = {
-  async getGlobalData({commit}){
+  async getTheGlobalData({commit}){
     const res = await api.countryData()
-
-    commit('globalData', res.countries.data.Global);
-    commit('globalChartData', res.countries.data.Countries);
+    commit('globalData', res.Global);
+    commit('globalChartData', res.Countries);
    
   }
 };
