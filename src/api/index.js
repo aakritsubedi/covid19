@@ -87,33 +87,33 @@ export default {
   },
   countryData: async () => {
     const url = "https://api.covid19api.com/summary";
-    let countries = await axios.get(url);
+    const countries = await axios.get(url);
 
     return countries.data;
   },
   // fetchHospital: async () => {
   //   const url = "http://localhost:9091/data/HospitalData";
-  //   let hospitals = await axios.get(url);
+  //   const hospitals = await axios.get(url);
 
   //   return hospitals.data;
   // },
   nepalData: async () => {
-    let nepalInfo = await axios.get(covidNepal+'/data/nepal');
+    const nepalInfo = await axios.get(covidNepal+'/data/nepal');
 
     return nepalInfo.data;
   },
   hospitalList: async () => {
-    let hospitalInfo = await axios.get(covidNepal+'/hospitals');
+    const hospitalInfo = await axios.get(covidNepal+'/hospitals');
 
     return hospitalInfo.data;
   },
   latestNews: async () => {
-    let nepalNews = await axios.get(covidNepal+'/news');
+    const nepalNews = await axios.get(covidNepal+'/news');
 
     return nepalNews.data;
   },
   provinceData: async () => {
-    let provinceData = await axios.get('https://data.nepalcorona.info/api/v1/covid/summary');
+    const provinceData = await axios.get('https://data.nepalcorona.info/api/v1/covid/summary');
     
     return provinceData.data.province;  
   }
