@@ -2,6 +2,7 @@ import axios from "axios";
 
 const url = "https://covid19.mathdro.id/api";
 const geoUrl = "https://ipapi.co/json";
+const covidNepal = 'https://nepalcorona.info/api/v1'
 
 export default {
   fetchAll: async () => {
@@ -96,4 +97,14 @@ export default {
 
     return hospitals.data;
   },
+  nepalData: async () => {
+    let nepalInfo = await axios.get(covidNepal+'/data/nepal');
+
+    return nepalInfo.data;
+  },
+  hospitalList: async () => {
+    let hospitalInfo = await axios.get(covidNepal+'/hospitals');
+
+    return hospitalInfo.data;
+  }
 };
