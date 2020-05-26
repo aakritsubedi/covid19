@@ -88,7 +88,8 @@ const actions = {
         title: data.title,
         title_ne: data.title_ne,
         covid_cases: data.covid_cases,
-        province: data.province
+        province: data.province,
+        summary:{},
       }
     });
 

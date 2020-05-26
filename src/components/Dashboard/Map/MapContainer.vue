@@ -42,7 +42,7 @@ export default {
     }
   },
   methods: {
-    ...mapActions(["getNepalInfo", "getNepalNews", "getProvinceData"])
+    ...mapActions(["getNepalInfo", "getNepalNews", "getProvinceData", "getDistrictInfo"])
   },
   created() {
     this.getNepalInfo();
