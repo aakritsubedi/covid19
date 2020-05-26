@@ -42,7 +42,7 @@ const actions = {
   async getNepalNews({ commit }) {
     let latestNews = await api.latestNews();
     
-    commit('setNepalNews', latestNews.data.slice(0, 9));
+    commit('setNepalNews', latestNews.data.slice(0, 20));
   },
 
   async getProvinceData({ commit }) {

@@ -8,7 +8,17 @@
     <DistrictSummary />
     <h2>Latest Update</h2>
     <div class="row">
-      <News v-for="(news, index) in nepalNews" :news="news" :key="index"/>
+      <News v-for="(news, index) in topNews" :news="news" :key="index"/>
+    </div>
+    <div class="other-news">
+    <h3>Other News</h3>
+    <ul>
+      <li v-for="(news, index) in otherNews" :key="index">
+        <a :href="news.url" target="_blank">
+          {{news.title}}
+        </a>
+      </li>
+    </ul>
     </div>
   </div>
 </template>
@@ -25,6 +35,12 @@ import DistrictSummary from "../Nepal/DistrictSummaryTable";
 export default {
   name: "Map",
   components: { Nepal, NepalSummary, News, ProvinceSummary, DistrictSummary },
+  data() {
+    return {
+      topNews: [],
+      otherNews: []
+    }
+  },
   methods: {
     ...mapActions(["getNepalInfo", "getNepalNews", "getProvinceData"])
   },
@@ -32,6 +48,9 @@ export default {
     this.getNepalInfo();
     this.getNepalNews(); 
     this.getProvinceData(); 
+    
+    this.topNews = this.nepalNews.slice(0,6);
+    this.otherNews = this.nepalNews.slice(6,20);
   },
   computed: {
     ...mapGetters(["nepalInfo", "nepalNews", "provinceInfo"])
