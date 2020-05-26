@@ -119,5 +119,15 @@ export default {
     }))
 
     return eachDirstrictData
+},
+  latestNews: async () => {
+    let nepalNews = await axios.get(covidNepal+'/news');
+
+    return nepalNews.data;
+  },
+  provinceData: async () => {
+    let provinceData = await axios.get('https://data.nepalcorona.info/api/v1/covid/summary');
+    
+    return provinceData.data.province;  
   }
 };

@@ -50,7 +50,6 @@ export default {
   },
   created() {
     this.getTheGlobalData();
-    console.log(this.theGlobal);
   },
   computed: {
     ...mapGetters(["theGlobal"])
