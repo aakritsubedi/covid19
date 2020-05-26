@@ -106,5 +106,10 @@ export default {
     let hospitalInfo = await axios.get(covidNepal+'/hospitals');
 
     return hospitalInfo.data;
+  },
+  latestNews: async () => {
+    let nepalNews = await axios.get(covidNepal+'/news');
+
+    return nepalNews.data;
   }
 };

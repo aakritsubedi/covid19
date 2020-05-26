@@ -2,12 +2,14 @@ import api from "@/api";
 
 const state = {
   nepalInfo: {},
-  nepalHospital: []
+  nepalHospital: [],
+  nepalNews: {}
 };
 
 const getters = {
   nepalInfo: (state) => state.nepalInfo,
   nepalHospital: (state) => state.nepalHospital,
+  nepalNews: (state) => state.nepalNews,
 };
 
 const actions = {
@@ -33,12 +35,19 @@ const actions = {
     let nepalHospitalData = await api.hospitalList();
     
     commit('setNepalHospital', nepalHospitalData.data);
+  },
+
+  async getNepalNews({ commit }) {
+    let latestNews = await api.latestNews();
+    
+    commit('setNepalNews', latestNews.data.slice(0, 9));
   }
 };
 
 const mutations = {
   setNepalInfo: (state, result) => (state.nepalInfo = result),
   setNepalHospital: (state, result) => (state.nepalHospital = result),
+  setNepalNews: (state, result) => (state.nepalNews = result),
 };
 
 export default {
