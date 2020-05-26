@@ -35,12 +35,6 @@ import DistrictSummary from "../Nepal/DistrictSummaryTable";
 export default {
   name: "Map",
   components: { Nepal, NepalSummary, News, ProvinceSummary, DistrictSummary },
-  data() {
-    return {
-      topNews: [],
-      otherNews: []
-    };
-  },
   methods: {
     ...mapActions(["getNepalInfo", "getNepalNews", "getProvinceData"])
   },
@@ -48,12 +42,9 @@ export default {
     this.getNepalInfo();
     this.getNepalNews();
     this.getProvinceData();
-
-    this.topNews = this.nepalNews.slice(0, 6);
-    this.otherNews = this.nepalNews.slice(6, 20);
   },
   computed: {
-    ...mapGetters(["nepalInfo", "nepalNews", "provinceInfo"])
+    ...mapGetters(["nepalInfo", "topNews", "otherNews","provinceInfo"])
   }
 };
 </script>

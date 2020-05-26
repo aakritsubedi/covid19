@@ -3,14 +3,16 @@ import api from "@/api";
 const state = {
   nepalInfo: {},
   nepalHospital: [],
-  nepalNews: {},
+  topNews: [],
+  otherNews: [],
   provinceInfo: {}
 };
 
 const getters = {
   nepalInfo: (state) => state.nepalInfo,
   nepalHospital: (state) => state.nepalHospital,
-  nepalNews: (state) => state.nepalNews,
+  topNews: (state) => state.topNews,
+  otherNews: (state) => state.otherNews,
   provinceInfo: (state) => state.provinceInfo,
 };
 
@@ -80,7 +82,10 @@ const actions = {
 const mutations = {
   setNepalInfo: (state, result) => (state.nepalInfo = result),
   setNepalHospital: (state, result) => (state.nepalHospital = result),
-  setNepalNews: (state, result) => (state.nepalNews = result),
+  setNepalNews: (state, result) => {
+    state.topNews = result.slice(0,6);
+    state.otherNews = result.slice(6,20);
+  },
   setProvinceData: (state, result) => (state.provinceInfo = result)
 };
 
