@@ -3,6 +3,7 @@ import axios from "axios";
 const url = "https://covid19.mathdro.id/api";
 const geoUrl = "https://ipapi.co/json";
 const covidNepal = 'https://nepalcorona.info/api/v1'
+const covidNepalData= 'https://data.nepalcorona.info/api/v1/'
 
 export default {
   fetchAll: async () => {
@@ -107,6 +108,18 @@ export default {
 
     return hospitalInfo.data;
   },
+
+  districtData: async () => {
+    const districtData = await axios.get(covidNepalData+'/districts');
+    const ids = districtData.data.map((data) => data.id)
+
+    const eachDirstrictData = await Promise.all(ids.map(async (data) => {
+      const info = await axios.get(covidNepalData+'/districts/'+data)
+      return info.data
+    }))
+
+    return eachDirstrictData
+},
   latestNews: async () => {
     const nepalNews = await axios.get(covidNepal+'/news');
 

@@ -6,32 +6,24 @@
         <th width="20%">District</th>
         <th width="80%">Info</th>
       </tr>
-      <tr>
+      <tr v-for="(item, index) in districtData" :key="index">
         <td>
-          Morang
-          Province 2
+          {{item.title}}
+          <br>
+          Province {{item.province}}
         </td>
         <td>
-          <ul class="hospital-list">
-            <li>Age: [20-28]</li>
-            <li>Active: 2</li>
-            <li>Recovered: 1</li>
-            <li>Male,Female: 5,6</li>
+          <div v-if="item.covid_cases.length > 0">
+          <ul class="Summary">
+            <li >Age: {{  item.summary.minAge}} - {{item.summary.maxAge}}</li>
+            <li>Active: {{item.summary.active}}</li>
+            <li>Recovered: {{item.summary.inactive}}</li>
+            <li>Male,Female: {{item.summary.male}}, {{item.summary.female}}</li>
           </ul>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          Morang
-          Province 2
-        </td>
-        <td>
-          <ul class="hospital-list">
-            <li>Age: [20-28]</li>
-            <li>Active: 2</li>
-            <li>Recovered: 1</li>
-            <li>Male,Female: 5,6</li>
-          </ul>
+          </div>
+          <div v-else>
+            No info Available.
+          </div>
         </td>
       </tr>
     </table>
@@ -39,8 +31,12 @@
 </template>
 
 <script>
+import { mapGetters} from "vuex";
 export default {
   name: "ProvinceTable",
-  props: ["districtInfo"]
+  props: ["districtInfo"],
+  computed:{
+    ...mapGetters(['districtData'])
+  }
 };
 </script>
