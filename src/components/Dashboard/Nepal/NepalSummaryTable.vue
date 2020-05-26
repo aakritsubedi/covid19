@@ -1,17 +1,36 @@
 <template>
-  <div>
+  <div class="nepal-summary-container">
     <h3>Nepal Summary</h3>
-    <table class="table">
+    <table class="table table-summary">
       <tr>
-        <th v-for="(info, index) in nepalInfo" :key="index">{{index}} {{info}}</th>
+        <th v-for="(info, index) in nepalInfo" :key="index">
+          <p class="label">
+            {{index}}
+            </p>
+            <p class="data">
+            {{info}}
+            </p>
+             
+          
+          </th>
       </tr>
     </table>
+
+ 
+
   </div>
+  
 </template>
+
 
 <script>
 export default {
   name: 'NepalSummary',
-  props: ['nepalInfo']
+  props: ['nepalInfo'],
+  
+ created() {
+    console.log(this.nepalInfo);
+  }
 }
+
 </script>
