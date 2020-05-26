@@ -1,9 +1,5 @@
 <template>
   <div>
-    <h2 class="text-cente" style="margin-top:60px">
-      <i class="fa fa-globe"></i>
-      Global Record
-    </h2>
     
     <GChart
       :settings="{packages: ['geochart'], mapsApiKey: 'AIzaSyDtbLwdEwBQgaBfgSKxR853Yz82FNCfQs4'}"
