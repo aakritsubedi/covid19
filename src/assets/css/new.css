@@ -183,6 +183,17 @@
   border-radius: 5px;
 }
 
+.newcard .body--summary {
+  padding: 12px 15px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
 .newcard .data {
   font-weight: bold;
   font-size: 32px;
@@ -386,5 +397,48 @@
         flex-basis: 33.33333333%;
     max-width: 33.33333333%;
   }
+}
+
+.nepal-summary-container {
+  margin-bottom: 20px;
+}
+
+.table-summary {
+  -webkit-box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.12), 0 2px 1px -1px rgba(0, 0, 0, 0.1), 0 1px 3px 0 rgba(0, 0, 0, 0.2);
+          box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.12), 0 2px 1px -1px rgba(0, 0, 0, 0.1), 0 1px 3px 0 rgba(0, 0, 0, 0.2);
+  border-radius: 3px;
+  margin-top: 10px;
+}
+
+.table-summary p {
+  margin-bottom: 5px;
+}
+
+.table-summary .label {
+  font-size: 16px;
+  font-weight: normal;
+}
+
+.table-summary .data {
+  font-size: 24px;
+  font-weight: 500;
+}
+
+.table-summary th {
+  padding: 20px 15px;
+}
+
+.news-card {
+  padding: 10px 15px;
+}
+
+.news-card__body {
+  padding: 0;
+}
+
+.news-card img {
+  height: 150px;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 /*# sourceMappingURL=new.css.map */

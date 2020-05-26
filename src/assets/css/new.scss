@@ -128,6 +128,13 @@
     flex-direction: column;
     align-items: flex-start;
     border-radius: 5px;
+
+    &--summary{
+      padding: 12px 15px;
+      display: flex;
+      flex-direction: column;
+  
+    }
   }
   .data {
     font-weight: bold;
@@ -136,6 +143,7 @@
   .sublabel {
     font-size: 12px;
   }
+  
 }
 
 // contact page
@@ -302,5 +310,47 @@
   .col-xs-4 {
     flex-basis: 33.33333333%;
     max-width: 33.33333333%;
+  }
+}
+
+
+
+// summary
+
+.nepal-summary-container{
+  margin-bottom: 20px;
+}
+.table-summary {
+  box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.12),
+      0 2px 1px -1px rgba(0, 0, 0, 0.10), 0 1px 3px 0 rgba(0, 0, 0, 0.2);
+  border-radius: 3px;
+  margin-top: 10px;
+  p{
+    margin-bottom: 5px;
+  }
+  .label{
+    font-size: 16px;
+    font-weight: normal;
+  }
+  .data {
+    font-size: 24px;
+    font-weight: 500;
+  }
+   th {
+    padding:20px 15px;
+  }
+}
+
+
+// news card
+
+.news-card {
+padding: 10px 15px;
+  &__body{
+    padding:0
+  }
+  img{
+    height:150px;
+    object-fit: cover;
   }
 }
