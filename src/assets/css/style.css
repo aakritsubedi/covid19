@@ -19,3 +19,8 @@
 .hospital-list li a {
   color: #222222;
 }
+
+.news-source {
+  float: right;
+  font-size: 12px;
+}
