@@ -43,6 +43,7 @@
       </div>
     </div>
     <hr />
+    <GlobalCard />
     <!-- <div class="newrow">
       <div class="col-xs-12">
         <GeoChart height="300" width="100%" />
@@ -54,13 +55,14 @@
 <script>
 import Chart from "./Chart";
 import Card from "@/components/Card/Card";
+import GlobalCard from "@/components/Card/GlobalCard";
 // import GeoChart from './Graphs/GeoChart'
 
 import { mapGetters, mapActions } from "vuex";
 
 export default {
   name: "Main",
-  components: { Card, Chart },
+  components: { Card, Chart, GlobalCard },
   async created() {
     this.init();
   },
