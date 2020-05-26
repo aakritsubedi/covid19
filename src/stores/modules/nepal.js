@@ -1,8 +1,11 @@
 import api from "@/api";
 
+
 const state = {
   nepalInfo: {},
   nepalHospital: [],
+  districtData: [],
+  nepalNews: {},
   topNews: [],
   otherNews: [],
   provinceInfo: {}
@@ -11,15 +14,16 @@ const state = {
 const getters = {
   nepalInfo: (state) => state.nepalInfo,
   nepalHospital: (state) => state.nepalHospital,
+  districtData: (state) => state.districtData,
+  nepalNews: (state) => state.nepalNews,
   topNews: (state) => state.topNews,
   otherNews: (state) => state.otherNews,
   provinceInfo: (state) => state.provinceInfo,
 };
 
 const actions = {
-  async getNepalInfo({ commit }) {
+  async getNepalInfo({ commit, dispatch }) {
     let nepalData = await api.nepalData();
-    
     let result = {
       "Tested Positive": nepalData.tested_positive,
       "Tested Negative": nepalData.tested_negative,
@@ -31,13 +35,74 @@ const actions = {
       "Recovered": nepalData.recovered,
       "Deaths": nepalData.deaths,
     }
-
+    dispatch('getDistrictInfo')
     commit('setNepalInfo', result);
+  },
+
+  async getDistrictInfo({ commit }) {
+    let districtInfo = await api.districtData();
+
+    const districtInfoMap = districtInfo.map(data => {
+      if (data.covid_cases.length != 0) {
+        const covidCasesData = data.covid_cases.map(data => {
+          return {
+            age: data.age,
+            state: data.currentState,
+            gender: data.gender
+          }
+        })
+
+        const summary = getSummary(covidCasesData)
+        return {
+          title: data.title,
+          title_ne: data.title_ne,
+          covid_cases: data.covid_cases,
+          summary: summary,
+          province: data.province
+        }
+
+      }
+      function getSummary(data) {
+        const ages = data.map(info => info.age).filter(data => data != null)
+        const state = data.map(info => info.state).filter(data => data != null)
+        const gender = data.map(info => info.gender).filter(data => data != null)
+
+        var min, max;
+        if (ages.length == 0) {
+          min = 0;
+          max = 0;
+        } else {
+          min = Math.min(...ages)
+          max = Math.max(...ages)
+        }
+
+        return {
+        active :state.filter(data => data == "active").length,
+        inactive : state.filter(data => data == "recovered").length,
+        
+        male : gender.filter(data => data == "male").length,
+        female :gender.filter(data => data == "female").length,
+        minAge: min,
+        maxAge: max
+        }
+
+      }
+
+      return {
+        title: data.title,
+        title_ne: data.title_ne,
+        covid_cases: data.covid_cases,
+        province: data.province,
+        summary:{},
+      }
+    });
+
+    commit('setDistrictInfo', districtInfoMap);
   },
 
   async getNepalHospital({ commit }) {
     let nepalHospitalData = await api.hospitalList();
-    
+
     commit('setNepalHospital', nepalHospitalData.data);
   },
 
@@ -82,11 +147,14 @@ const actions = {
 const mutations = {
   setNepalInfo: (state, result) => (state.nepalInfo = result),
   setNepalHospital: (state, result) => (state.nepalHospital = result),
+  setDistrictInfo: (state, result) => (state.districtData = result),
+  setNepalNews: (state, result) => (state.nepalNews = result),
   setNepalNews: (state, result) => {
     state.topNews = result.slice(0,6);
     state.otherNews = result.slice(6,20);
   },
   setProvinceData: (state, result) => (state.provinceInfo = result)
+
 };
 
 export default {

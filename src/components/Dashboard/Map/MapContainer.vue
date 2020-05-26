@@ -36,7 +36,7 @@ export default {
   name: "Map",
   components: { Nepal, NepalSummary, News, ProvinceSummary, DistrictSummary },
   methods: {
-    ...mapActions(["getNepalInfo", "getNepalNews", "getProvinceData"])
+    ...mapActions(["getNepalInfo", "getNepalNews", "getProvinceData", "getDistrictInfo"])
   },
   created() {
     this.getNepalInfo();
