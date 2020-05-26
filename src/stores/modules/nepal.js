@@ -6,6 +6,8 @@ const state = {
   nepalHospital: [],
   districtData: [],
   nepalNews: {},
+  topNews: [],
+  otherNews: [],
   provinceInfo: {}
 };
 
@@ -14,6 +16,8 @@ const getters = {
   nepalHospital: (state) => state.nepalHospital,
   districtData: (state) => state.districtData,
   nepalNews: (state) => state.nepalNews,
+  topNews: (state) => state.topNews,
+  otherNews: (state) => state.otherNews,
   provinceInfo: (state) => state.provinceInfo,
 };
 
@@ -145,6 +149,10 @@ const mutations = {
   setNepalHospital: (state, result) => (state.nepalHospital = result),
   setDistrictInfo: (state, result) => (state.districtData = result),
   setNepalNews: (state, result) => (state.nepalNews = result),
+  setNepalNews: (state, result) => {
+    state.topNews = result.slice(0,6);
+    state.otherNews = result.slice(6,20);
+  },
   setProvinceData: (state, result) => (state.provinceInfo = result)
 
 };
