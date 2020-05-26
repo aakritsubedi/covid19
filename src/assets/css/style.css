@@ -13,6 +13,7 @@
 
 .hospital-list {
   list-style-type: none;
+  font-size: 14px;
 }
 
 .hospital-list li a {

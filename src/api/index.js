@@ -91,12 +91,12 @@ export default {
 
     return countries.data;
   },
-  fetchHospital: async () => {
-    const url = "http://localhost:9091/data/HospitalData";
-    let hospitals = await axios.get(url);
+  // fetchHospital: async () => {
+  //   const url = "http://localhost:9091/data/HospitalData";
+  //   let hospitals = await axios.get(url);
 
-    return hospitals.data;
-  },
+  //   return hospitals.data;
+  // },
   nepalData: async () => {
     let nepalInfo = await axios.get(covidNepal+'/data/nepal');
 

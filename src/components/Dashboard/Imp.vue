@@ -1,5 +1,5 @@
 <template>
-  <div class="contact-container text-left" style="overflow:hidden">
+  <div class="container text-left" style="overflow:hidden">
     <p class="heading">Important Contact Point</p>
 
     <div class="row">

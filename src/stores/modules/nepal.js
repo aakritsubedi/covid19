@@ -1,11 +1,13 @@
 import api from "@/api";
 
 const state = {
-  nepalInfo: {}
+  nepalInfo: {},
+  nepalHospital: []
 };
 
 const getters = {
   nepalInfo: (state) => state.nepalInfo,
+  nepalHospital: (state) => state.nepalHospital,
 };
 
 const actions = {
@@ -23,15 +25,20 @@ const actions = {
       "Recovered": nepalData.recovered,
       "Deaths": nepalData.deaths,
     }
-    
-    console.log(result);
-    
+
     commit('setNepalInfo', result);
+  },
+
+  async getNepalHospital({ commit }) {
+    let nepalHospitalData = await api.hospitalList();
+    
+    commit('setNepalHospital', nepalHospitalData.data);
   }
 };
 
 const mutations = {
   setNepalInfo: (state, result) => (state.nepalInfo = result),
+  setNepalHospital: (state, result) => (state.nepalHospital = result),
 };
 
 export default {
