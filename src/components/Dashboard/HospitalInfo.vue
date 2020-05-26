@@ -8,10 +8,9 @@
     <table class="table mt-3">
       <thead>
         <tr>
-          <th>Hospital Info</th>
-          <th>Address</th>
-          <th>Contact No.</th>
-          <th>Info</th>
+          <th width="40%">Hospital Info</th>
+          <th width="20%">Contact Info.</th>
+          <th width="40%">Info</th>
         </tr>
       </thead>
       <tbody>
@@ -19,25 +18,27 @@
           <td>
             <ul class="hospital-list">
               <li>{{ hospital.name }}</li>
-              <li>{{ hospital.timing }}</li>
+              <li><b>{{ hospital.address }}</b> Province-{{hospital.state}}</li>
             </ul>
           </td>
           <td>
             <ul class="hospital-list">
-              <li>{{ hospital.address }}</li>
-              <li>{{ hospital.province }}</li>
+              <li>{{ hospital.phone || '-' }} </li>
+              <li v-if="hospital.contact_person">
+                {{ hospital.contact_person }}, {{ hospital.contact_person_number }}
+              </li>
             </ul>
           </td>
-          <td>{{ hospital.phone_no}}</td>
           <td>
             <ul class="hospital-list">
               <li>
-                <b>No. of beds:</b>
-                {{ hospital.bed}}
+                No. of beds: {{ hospital.capacity.beds || 0 }}
+              </li>
+              <li class="text-capitalize">
+                Vantilator: {{hospital.capacity.ventilators || 'no' }}
               </li>
               <li>
-                <b>Covid Checkup:</b>
-                {{hospital.covid19}}
+                Isolation Beds: {{hospital.capacity.isolation_beds || '-'}}
               </li>
             </ul>
           </td>
@@ -51,23 +52,25 @@
 import { mapGetters, mapActions } from "vuex";
 
 export default {
-  name: "GetTested",
+  name: "NepalHospital",
   data() {
     return {
       search: ""
     };
   },
   methods: {
-    ...mapActions(["getHospitals"])
+    ...mapActions(["getNepalHospital"])
   },
-  async created() {
-    await this.getHospitals();
+  created() {
+    this.getNepalHospital();  
   },
   computed: {
-    ...mapGetters(["hospitals"]),
+    ...mapGetters(["nepalHospital"]),
     filterHospital: function() {
-      return this.hospitals.filter(hospital => {
-        return hospital.name.match(this.search);
+
+      return this.nepalHospital.filter(hospital => { 
+        let keyword = this.search.toUpperCase();     
+        return hospital.name.match(keyword);
       });
     }
   }

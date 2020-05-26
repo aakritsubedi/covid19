@@ -3,7 +3,7 @@
     <div class="date-info">
       <p>
         last Updated:
-        <span>{{lastUpdate | formatDate }}</span>
+        <span>{{lastUpdate}}</span>
       </p>
 
       <span :title="myCountry.isp" class="mt-2">
@@ -43,24 +43,26 @@
       </div>
     </div>
     <hr />
-    <div class="newrow">
+    <GlobalCard />
+    <!-- <div class="newrow">
       <div class="col-xs-12">
         <GeoChart height="300" width="100%" />
       </div>
-    </div>
+    </div> -->
   </div>
 </template>
 
 <script>
 import Chart from "./Chart";
 import Card from "@/components/Card/Card";
-import GeoChart from './Graphs/GeoChart'
+import GlobalCard from "@/components/Card/GlobalCard";
+// import GeoChart from './Graphs/GeoChart'
 
 import { mapGetters, mapActions } from "vuex";
 
 export default {
   name: "Main",
-  components: { Card, Chart, GeoChart },
+  components: { Card, Chart, GlobalCard },
   async created() {
     this.init();
   },
@@ -89,7 +91,7 @@ export default {
     formatDate: value => {
       const option = {year: 'numeric', month: 'short', day: '2-digit' };
       const newDate = new Intl.DateTimeFormat("en", option).format(new Date(value))
-      return newDate
+      return newDate;
     }
   }
 };

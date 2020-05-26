@@ -69,7 +69,7 @@
 import Covid19 from "@/components/Dashboard/Covid19";
 import Main from "@/components/Dashboard/Main";
 import Imp from "@/components/Dashboard/Imp";
-import Hospital from "@/components/Dashboard/HospitalList";
+import Hospital from "@/components/Dashboard/HospitalInfo";
 import About from "@/components/Dashboard/About";
 import Map from "@/components/Dashboard/Map/MapContainer";
 

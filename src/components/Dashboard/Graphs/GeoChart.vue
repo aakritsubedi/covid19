@@ -1,10 +1,6 @@
 <template>
   <div>
-    <h2 class="text-cente" style="margin-top:60px">
-      <i class="fa fa-globe"></i>
-      Global Record
-    </h2>
-    <Card />
+    
     <GChart
       :settings="{packages: ['geochart'], mapsApiKey: 'AIzaSyDtbLwdEwBQgaBfgSKxR853Yz82FNCfQs4'}"
       :data="globalChartData"
@@ -17,7 +13,7 @@
 
 <script>
 import { GChart } from "vue-google-charts";
-import Card from "@/components/Card/GlobalCard";
+
 import  {mapActions, mapGetters} from "vuex";
 
 export default{
