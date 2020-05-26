@@ -340,3 +340,17 @@
     padding:20px 15px;
   }
 }
+
+
+// news card
+
+.news-card {
+padding: 10px 15px;
+  &__body{
+    padding:0
+  }
+  img{
+    height:150px;
+    object-fit: cover;
+  }
+}

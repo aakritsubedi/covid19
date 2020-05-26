@@ -427,4 +427,18 @@
 .table-summary th {
   padding: 20px 15px;
 }
+
+.news-card {
+  padding: 10px 15px;
+}
+
+.news-card__body {
+  padding: 0;
+}
+
+.news-card img {
+  height: 150px;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
 /*# sourceMappingURL=new.css.map */

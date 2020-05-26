@@ -10,8 +10,6 @@
             <p class="data">
             {{info}}
             </p>
-             
-          
           </th>
       </tr>
     </table>

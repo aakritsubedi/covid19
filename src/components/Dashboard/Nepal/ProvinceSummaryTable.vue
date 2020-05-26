@@ -24,8 +24,5 @@
 export default {
   name: "ProvinceTable",
   props: ['provinceInfo'],
-  created() {
-    console.log(this.provinceInfo);
-  }
 }
 </script>
