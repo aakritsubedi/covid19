@@ -2,6 +2,8 @@ import axios from "axios";
 
 const url = "https://covid19.mathdro.id/api";
 const geoUrl = "https://ipapi.co/json";
+const covidNepal = 'https://nepalcorona.info/api/v1'
+const covidNepalData= 'https://data.nepalcorona.info/api/v1/'
 
 export default {
   fetchAll: async () => {
@@ -86,14 +88,46 @@ export default {
   },
   countryData: async () => {
     const url = "https://api.covid19api.com/summary";
-    let countries = await axios.get(url);
+    const countries = await axios.get(url);
 
     return countries.data;
   },
-  fetchHospital: async () => {
-    const url = "http://localhost:9091/data/HospitalData";
-    let hospitals = await axios.get(url);
+  // fetchHospital: async () => {
+  //   const url = "http://localhost:9091/data/HospitalData";
+  //   const hospitals = await axios.get(url);
 
-    return hospitals.data;
+  //   return hospitals.data;
+  // },
+  nepalData: async () => {
+    const nepalInfo = await axios.get(covidNepal+'/data/nepal');
+
+    return nepalInfo.data;
   },
+  hospitalList: async () => {
+    const hospitalInfo = await axios.get(covidNepal+'/hospitals');
+
+    return hospitalInfo.data;
+  },
+
+  districtData: async () => {
+    const districtData = await axios.get(covidNepalData+'/districts');
+    const ids = districtData.data.map((data) => data.id)
+
+    const eachDirstrictData = await Promise.all(ids.map(async (data) => {
+      const info = await axios.get(covidNepalData+'/districts/'+data)
+      return info.data
+    }))
+
+    return eachDirstrictData
+},
+  latestNews: async () => {
+    const nepalNews = await axios.get(covidNepal+'/news');
+
+    return nepalNews.data;
+  },
+  provinceData: async () => {
+    const provinceData = await axios.get('https://data.nepalcorona.info/api/v1/covid/summary');
+    
+    return provinceData.data.province;  
+  }
 };

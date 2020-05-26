@@ -13,8 +13,17 @@
 
 .hospital-list {
   list-style-type: none;
+  font-size: 14px;
 }
 
 .hospital-list li a {
   color: #222222;
+}
+
+.news-source {
+  float: right;
+  font-size: 12px;
+}
+.other-news{
+  text-align: left;
 }
