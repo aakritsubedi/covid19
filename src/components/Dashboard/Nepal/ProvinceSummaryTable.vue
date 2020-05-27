@@ -1,6 +1,6 @@
 <template>
   <div>
-      <h2>Province wise data</h2>
+      <h2>Province wise report</h2>
       <table class="table">
         <tr>
           <th>Province</th>

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h2>District wise data</h2>
+    <h2>District wise report</h2>
     <table class="table">
       <tr>
         <th width="20%">District</th>
