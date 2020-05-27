@@ -3,10 +3,8 @@
     <Nepal />
     <div style="text-align:left;">
       <NepalSummary :nepalInfo="nepalInfo" />
-      <hr />
       <ProvinceSummary :provinceInfo="provinceInfo" />
       <hr />
-      <DistrictSummary />
       <h2>Latest Update</h2>
       <div class="row">
         <News v-for="(news, index) in topNews" :news="news" :key="index" />
@@ -18,6 +16,17 @@
             <a :href="news.url" target="_blank">{{news.title}}</a>
           </li>
         </ul>
+      </div>
+      <button
+        class="btn btn-primary"
+        type="button"
+        data-toggle="collapse"
+        data-target="#collapseExample"
+        aria-expanded="false"
+        aria-controls="collapseExample"
+      >District Wise Report</button>
+      <div class="collapse" id="collapseExample">
+        <DistrictSummary />
       </div>
     </div>
   </div>
@@ -36,7 +45,12 @@ export default {
   name: "Map",
   components: { Nepal, NepalSummary, News, ProvinceSummary, DistrictSummary },
   methods: {
-    ...mapActions(["getNepalInfo", "getNepalNews", "getProvinceData", "getDistrictInfo"])
+    ...mapActions([
+      "getNepalInfo",
+      "getNepalNews",
+      "getProvinceData",
+      "getDistrictInfo"
+    ])
   },
   created() {
     this.getNepalInfo();
@@ -44,7 +58,7 @@ export default {
     this.getProvinceData();
   },
   computed: {
-    ...mapGetters(["nepalInfo", "topNews", "otherNews","provinceInfo"])
+    ...mapGetters(["nepalInfo", "topNews", "otherNews", "provinceInfo"])
   }
 };
 </script>
