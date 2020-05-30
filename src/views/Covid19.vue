@@ -25,7 +25,7 @@
         </ul>
       </div>
       <button @click="nextHandler()">next</button>
-      <button @click="backHandler()">back</button>
+      <button @click="backHandler()" v-show="result == 0">back</button>
     </div>
   </div>
 </template>
