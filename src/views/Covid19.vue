@@ -1,6 +1,7 @@
 <template>
   <div class="covid-container ">
     <div class="covid__header">
+      <router-link to="/" style="color:white;">&larr;(Back)</router-link>
       <h1>Check your risk for COVID‑19</h1>
     </div>
 
@@ -14,28 +15,11 @@
             </p>
             <div class="covid-btn" @click="changeScene()">Get Started</div>
           </div>
-          <div class="covid-question" v-if="tempStatus">
+          <div class="covid-question" v-if="tempStatus && result ===0">
             <div class="title">
-              <!-- Have you recently started experiencing any of these symptoms? -->
               {{question.question}}
             </div>
             <div class="options">
-              <!-- <li class="options__item">Fever or chills</li>
-              <li class="options__item options__item--active">
-                Mild or Moderate difficulty breathing
-              </li>
-              <li class="options__item options__item--active">
-                ew or worsening cough
-              </li>
-              <li class="options__item options__item--active">sore throat</li>
-              <li class="options__item">None of the above</li>
-              <li class="options__item">None of the above</li>
-              <li class="options__item">None of the above</li>
-
-              <li class="options__item">
-                In the last 14 days, what is your exposure to others who are
-                known to have COVID‑19
-              </li> -->
               <li class="options__item" :class="opt.selected ? `options__item--active`: ``" v-for="(opt, key) in question.options" :key="key" @click="() => selectHandler(key)">
                 {{opt.value}}
               </li>
@@ -45,6 +29,9 @@
               <div class="footer-btn active" @click="nextHandler()">Next</div>
             </div>
           </div>
+          <div class="covid-result" v-if="result !== 0">
+            <TestResult :questions="questions" :result="result"/>
+          </div>
         </div>
       </div>
     </div>
@@ -52,10 +39,14 @@
 </template>
 
 <script>
-import { questions } from '@/constants/covidQue.js'
+import { questions } from '@/constants/covidQue.js';
+import TestResult from '@/components/TestResult';
 
 export default {
   name: 'Covid19',
+  components: {
+    TestResult
+  },
   data() {
     return {
       questions: [],

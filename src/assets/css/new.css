@@ -454,7 +454,7 @@
 
 .covid__header {
   height: 250px;
-  background-color: royalblue;
+  background-color:#2C3335;
   width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -500,7 +500,7 @@
       align-self: center;
   width: 50%;
   padding: 10px;
-  background-color: royalblue;
+  background-color: #2C3335;
   text-align: center;
   color: white;
   text-transform: uppercase;
@@ -548,7 +548,7 @@
 .covid-question .options__item--active {
   -webkit-box-shadow: none;
           box-shadow: none;
-  background-color: royalblue;
+  background-color: #2C3335;
   color: white;
 }
 
@@ -569,7 +569,7 @@
 }
 
 .covid-question .footer .active {
-  background-color: royalblue;
+  background-color: #2C3335;
   color: white;
 }
 
