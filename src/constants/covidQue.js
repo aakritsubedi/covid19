@@ -15,7 +15,7 @@ export const questions = [
 
             },
             {
-                value: "ew or worsening cough",
+                value: "New or worsening cough",
                 points: 1,
                 selected: false
             },
