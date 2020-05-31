@@ -119,10 +119,16 @@ export default {
       return this.questions[this.selectedIndex]
     },
   },
-
   created() {
     this.init()
   },
+  beforeDestroy() {
+    this.questions.forEach(que => {
+      que.options.forEach(opt => {
+        opt.selected = false
+      })
+    })
+  }
 }
 </script>
 
