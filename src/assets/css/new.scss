@@ -4,6 +4,7 @@
   --text-color: #b6b6b6;
   --text-color-dark: #3a3a3a;
   --text-color-ligh: #e4e4e4;
+  --new-primary-color: #2c3335;
 }
 .bg--warning {
   background-image: linear-gradient(135deg, #fdeb71 10%, #f8d800 100%);
@@ -19,11 +20,18 @@
   margin-top: 10px;
 }
 
+.d-flex {
+  display: flex;
+}
 .f-j-center {
   justify-content: center;
 }
 .f-a-center {
   align-items: center;
+}
+
+.text-center {
+  text-align: center;
 }
 
 /* flex grid */
@@ -129,11 +137,10 @@
     align-items: flex-start;
     border-radius: 5px;
 
-    &--summary{
+    &--summary {
       padding: 12px 15px;
       display: flex;
       flex-direction: column;
-  
     }
   }
   .data {
@@ -143,7 +150,6 @@
   .sublabel {
     font-size: 12px;
   }
-  
 }
 
 // contact page
@@ -233,6 +239,30 @@
   width: 100%;
   background-color: var(--text-color-ligh);
 }
+
+.covid__test {
+  position: absolute;
+  top: 25px;
+  right: 50px;
+  .nurse__avatar {
+    border-radius: 4px;
+    border: 2px solid var(--new-primary-color);
+    padding: 8px 15px;
+    cursor: pointer;
+    text-decoration: none;
+    color: var(--new-primary-color);
+
+    i {
+      font-size: 20px;
+      padding-right: 5px;
+    }
+
+    &:hover {
+      background-color: var(--new-primary-color);
+      color: white;
+    }
+  }
+}
 /* media query */
 @media only screen and (max-width: 768px) {
   .dashboard-wrapper {
@@ -311,24 +341,51 @@
     flex-basis: 33.33333333%;
     max-width: 33.33333333%;
   }
+
+  .covid__test {
+    left: unset;
+    top: unset;
+    bottom: 10px;
+    right: 15px;
+
+    span {
+      display: none;
+    }
+
+    & .nurse__avatar {
+      display: inline-block;
+      border-radius: 50%;
+      background-color: var(--new-primary-color);
+      padding: unset;
+      width: 52px;
+      height: 52px;
+      text-align: center;
+      line-height: 50px;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+
+      i {
+        color: white;
+        padding-right: 0px;
+        font-size: 24px;
+      }
+    }
+  }
 }
-
-
 
 // summary
 
-.nepal-summary-container{
+.nepal-summary-container {
   margin-bottom: 20px;
 }
 .table-summary {
-  box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.12),
-      0 2px 1px -1px rgba(0, 0, 0, 0.10), 0 1px 3px 0 rgba(0, 0, 0, 0.2);
+  box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.12), 0 2px 1px -1px rgba(0, 0, 0, 0.1),
+    0 1px 3px 0 rgba(0, 0, 0, 0.2);
   border-radius: 3px;
   margin-top: 10px;
-  p{
+  p {
     margin-bottom: 5px;
   }
-  .label{
+  .label {
     font-size: 16px;
     font-weight: normal;
   }
@@ -336,21 +393,143 @@
     font-size: 24px;
     font-weight: 500;
   }
-   th {
-    padding:20px 15px;
+  th {
+    padding: 20px 15px;
   }
 }
-
 
 // news card
 
 .news-card {
-padding: 10px 15px;
-  &__body{
-    padding:0
+  padding: 10px 15px;
+  &__body {
+    padding: 0;
   }
-  img{
-    height:150px;
+  img {
+    height: 150px;
     object-fit: cover;
+  }
+}
+
+// covid page
+
+.covid-container {
+  margin-bottom: 50px;
+}
+
+.covid__header {
+  height: 40vh;
+  background-color: var(--new-primary-color);
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  margin-top: -30px;
+  text-align: center;
+  padding-bottom: 20px;
+}
+
+.covid__body {
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  margin-top: -80px;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+
+  border-radius: 5px;
+  padding: 30px;
+
+  & .label {
+    font-size: 20px;
+    color: #122740;
+    text-align: center;
+    padding-bottom: 20px;
+  }
+
+  & .covid-btn {
+    align-self: center;
+    width: 50%;
+    padding: 10px;
+    background-color: var(--new-primary-color);
+    text-align: center;
+    color: white;
+    text-transform: uppercase;
+    border-radius: 30px;
+    cursor: pointer;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+
+    &:hover {
+      background-color: var(--new-primary-color);
+    }
+  }
+  & .first-scene {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+.covid-question {
+  & .title {
+    font-size: 19px;
+    color: #263238;
+  }
+  & .options {
+    padding-top: 20px;
+    list-style-type: none;
+    &__item {
+      background-color: #cfd8dc;
+      padding: 12px 12px;
+      border-radius: 3px;
+      cursor: pointer;
+      color: #37474f;
+      box-shadow: inset 0 3px 5px 0 rgba(0, 0, 0, 0.08);
+      margin-bottom: 15px;
+
+      &--active {
+        box-shadow: none;
+        background-color: var(--new-primary-color);
+        color: white;
+      }
+    }
+  }
+
+  & .footer {
+    padding-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    &-btn {
+      padding: 8px 15px;
+      border-radius: 3px;
+      cursor: pointer;
+    }
+    & .active {
+      background-color: var(--new-primary-color);
+      color: white;
+    }
+    & .inactive {
+      background-color: #eceff1;
+    }
+  }
+}
+
+.covid__back {
+  position: absolute;
+  top: 15px;
+  left: 20px;
+  color: white;
+  text-transform: uppercase;
+  & i {
+    font-size: 15px;
+  }
+}
+
+.covid__footer {
+  padding-top: 30px;
+  text-align: center;
+  width: 95%;
+  margin: 0 auto;
+  p {
+    margin-bottom: 5px;
   }
 }

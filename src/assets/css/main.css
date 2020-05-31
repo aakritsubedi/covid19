@@ -1,6 +1,7 @@
 .dashboard-wrapper {
   display: flex;
   width: 100%;
+  position: relative;
 }
 
 .side-menu {
@@ -60,4 +61,12 @@
   color: #525252;
 }
 
-/* main */
+/* contact */
+.imp-contact {
+  list-style-type: none;
+}
+.imp-contact li {
+  font-size: 18px;
+  font-weight: bold;
+  margin: 25px 0;
+}

@@ -3,8 +3,9 @@
     <div class="side-menu">
       <div class="list-group">
         <div
-          v-if="(country === 'Nepal')"
+          v-if="country === 'Nepal'"
           class="list-group__item"
+          :class="component == 'Map' ? 'list-group__item--active':''"
           @click="(event) => setComponent(event, 'Map')"
           title="Nepal Statistics"
         >
@@ -17,6 +18,7 @@
           class="list-group__item"
           @click="(event) => setComponent(event, 'Main')"
           title="World Statistics"
+          :class="component == 'Main' ? 'list-group__item--active':''"
         >
           <div class="list-group__icon">
             <i class="fa fa-globe"></i>
@@ -27,6 +29,7 @@
           class="list-group__item"
           @click="(event) => setComponent(event, 'Imp')"
           title="List of Imp Contact No."
+          :class="component == 'Imp' ? 'list-group__item--active':''"
         >
           <div class="list-group__icon">
             <i class="fa fa-sticky-note-o"></i>
@@ -37,6 +40,7 @@
           class="list-group__item"
           @click="(event) => setComponent(event, 'Hospital')"
           title="Hospital Info"
+          :class="component == 'Hospital' ? 'list-group__item--active':''"
         >
           <div class="list-group__icon">
             <i class="fa fa-hospital-o"></i>
@@ -48,6 +52,7 @@
           class="list-group__item"
           @click="(event) => setComponent(event, 'About')"
           title="About Covid19"
+          :class="component == 'About' ? 'list-group__item--active':''"
         >
           <div class="list-group__icon">
             <i class="fa fa-info"></i>
@@ -62,10 +67,16 @@
         <component :is="component"></component>
       </transition>
     </div>
+    <div class="covid__test">
+      <router-link to="/covid19" class="nurse__avatar">
+        <i class="fa fa-user-md" aria-hidden="true"></i>
+        <span>Get Tested</span>
+      </router-link>
+    </div>
   </div>
 </template>
 
- <script>
+<script>
 import Covid19 from "@/components/Dashboard/Covid19";
 import Main from "@/components/Dashboard/Main";
 import Imp from "@/components/Dashboard/Imp";
