@@ -1,65 +1,97 @@
 <template>
   <div class="container text-left" style="overflow:hidden">
-    <p class="heading">Important Contact Point</p>
-
+    <h3 class="heading">Important Contact Point</h3>
     <div class="row">
-      <div class="col-md-8">
-        <ul>
+      <div class="col-md-12">
+        <ul class="imp-contact">
           <li>LP Gas</li>
-          <ul>
-            <li>Hotline 1146</li>
-            <li>Toll Free 16600110028</li>
-            <li>
-              <a
-                href="@/assets/files/LPG Gas Distribution list for 3rd April 2020.pdf"
-                target="_blank"
-              >Distribution List</a>
-            </li>
-          </ul>
+          <table class="table">
+            <tbody>
+              <tr><td>Hotline</td> <td>1146</td></tr>
+              <tr><td>Toll Free</td> <td>16600110028</td></tr>
+              <tr><td>Distribution List</td> <td><a
+                  href="@/assets/files/LPG Gas Distribution list for 3rd April 2020.pdf"
+                  target="_blank"
+                >Click here</a></td></tr>
+            </tbody>
+          </table>
           <li>Drinking Water</li>
-          <ul>
-            <li>Ichangu Narayan Khane Pani, swayambhu 01-4224816,01-4231371</li>
-            <li>Ichangu Drinking Water Supply 4270693</li>
-            <li>Balaju Khanepani Suppliers , macha pokhari 01-4350449</li>
-            <li>Harati Tanker Sewa, swayambhu 01-4224816,01-4231371</li>
-            <li>Khangsar Khanepani Sewa, swayambhu 01-4279441,01-4280272</li>
-            <li>Gana Khanepani, jorpati 01-4498383,01-4437033</li>
-            <li>Kailash Water Services, Khicha Pokhari 01-4242314</li>
-            <li>Matatirtha Khanepani Sewa, kalanki 01-4271322</li>
-            <li>Srijana Shuddhakhanepani Sewa, kathmandu 01-4260365</li>
-            <li>Bangalamukhi Khanepani Sewa, lagankhel 01-5539248,01-9803162040</li>
-            <li>Buddha Khanepani , Saatdobato 01-5551755</li>
-            <li>Pabitra Khane Pani - Lalitpur Area - 9814986543</li>
-          </ul>
+          <table class="table">
+            <tbody>
+              <tr v-for="(info, key) in drinkingWater" :key="key">
+                <td>{{ info.name }}</td>
+                <td>{{ info.contactNo }}</td>
+              </tr>
+            </tbody>
+          </table>
         </ul>
       </div>
-      <div class="col-md-4">
-        <ul>
-          <li>Groceries Delivery</li>
-          <ul>
-            <li>Bhatbhateni</li>
-            <li>SalesBerry</li>
-            <li>Daraz (w/ Bigmart)</li>
-            <li>Sastodeal</li>
-            <li>Kirana</li>
-            <li>Nimbus Bazar</li>
-            <li>SmartDoko</li>
-            <li>Gyapu</li>
-          </ul>
-        </ul>
-        <ul>
-          <li>Important Links</li>
-          <ul>
-            <li>
-              <a href="https://covid.hamropatro.com/" target="_blank">Call to Doctor Sewa</a>
-            </li>
-            <li>
-              <a href="http://www.coronanepal.org/" target="_blank">Corona Nepal</a>
-            </li>
-            <li>
-              <a href="http://covid19.mohp.gov.np/" target="_blank">Latest Data by GON</a>
-            </li>
-          </ul>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <h3>Online shopping platforms offering deliveries of essential goods during the lockdown</h3>
+        <ul class="imp-contact">
+          <li>Groceries</li>
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Company</th>
+                <th>Minimum Order Value</th>
+                <th>Link</th>
+                <th width="25%">Contact</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr v-for="(info, key) in groceries" :key="key">
+                <td>{{ info.name }}</td>
+                <td>{{ info.minimumOrder | formatRs }}</td>
+                <td>
+                  <a :href="info.link" target="_blank">website</a>
+                </td>
+                <td>{{ info.contactNo || '-' }}</td>
+              </tr>
+            </tbody>
+          </table>
+          <li>Fruits and Vegetables</li>
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Company</th>
+                <th>Minimum Order Value</th>
+                <th>Link</th>
+                <th width="25%">Contact</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr v-for="(info, key) in foodAndVeg" :key="key">
+                <td>{{ info.name }}</td>
+                <td>{{ info.minimumOrder | formatRs }}</td>
+                <td>
+                  <a :href="info.link" target="_blank">website</a>
+                </td>
+                <td>{{ info.contactNo || '-' }}</td>
+              </tr>
+            </tbody>
+          </table>
+          <li>Medicinal supplies</li>
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Company</th>
+                <th>Link</th>
+                <th width="25%">Contact</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr v-for="(info, key) in medical" :key="key">
+                <td>{{ info.name }}</td>
+                <td>
+                  <a :href="info.link" target="_blank">website</a>
+                </td>
+                <td>{{ info.contactNo || '-' }}</td>
+              </tr>
+            </tbody>
+          </table>
         </ul>
       </div>
     </div>
@@ -67,7 +99,29 @@
 </template>
 
 <script>
+import {
+  drinkingWater,
+  groceries,
+  foodAndVeg,
+  medical
+} from "@/constants/impContact.js";
+
 export default {
-  name: "Imp"
+  name: "Imp",
+  data() {
+    return {
+      drinkingWater: drinkingWater,
+      groceries: groceries,
+      foodAndVeg: foodAndVeg,
+      medical: medical
+    };
+  },
+  filters: {
+    formatRs: function(value) {
+      return value
+        ? "Rs. " + value.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,")
+        : "N/A";
+    }
+  }
 };
 </script>
