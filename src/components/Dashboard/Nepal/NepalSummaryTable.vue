@@ -26,9 +26,6 @@ export default {
   name: 'NepalSummary',
   props: ['nepalInfo'],
   
- created() {
-    console.log(this.nepalInfo);
-  }
 }
 
 </script>

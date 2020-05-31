@@ -114,7 +114,6 @@ const actions = {
 
   async getProvinceData({ commit }) {
     let provinceInfo = await api.provinceData();
-    console.log(provinceInfo);
     let info = {
       1: { province: 1, total: 0, active: 0, recovered: 0, deaths: 0},
       2: { province: 2, total: 0, active: 0, recovered: 0, deaths: 0},
