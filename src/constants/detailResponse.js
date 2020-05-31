@@ -40,7 +40,7 @@ export const detailResponse = {
     {
       title: "Watch for Emergency Signs",
       description:
-        "Call 1115 if you develop any emergency warning signs such as severe, constant chest pain or pressure; extreme difficulty breathing; severe, constant lightheadedness; serious disorientation or unresponsiveness.",
+        "Call 1115 or 1133 if you develop any emergency warning signs such as severe, constant chest pain or pressure; extreme difficulty breathing; severe, constant lightheadedness; serious disorientation or unresponsiveness.",
     },
     {
       title: "Testing Recommended",
