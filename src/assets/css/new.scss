@@ -26,6 +26,10 @@
   align-items: center;
 }
 
+.text-center {
+  text-align: center;
+}
+
 /* flex grid */
 .newrow {
   display: flex;
@@ -129,11 +133,10 @@
     align-items: flex-start;
     border-radius: 5px;
 
-    &--summary{
+    &--summary {
       padding: 12px 15px;
       display: flex;
       flex-direction: column;
-  
     }
   }
   .data {
@@ -143,7 +146,6 @@
   .sublabel {
     font-size: 12px;
   }
-  
 }
 
 // contact page
@@ -313,22 +315,20 @@
   }
 }
 
-
-
 // summary
 
-.nepal-summary-container{
+.nepal-summary-container {
   margin-bottom: 20px;
 }
 .table-summary {
-  box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.12),
-      0 2px 1px -1px rgba(0, 0, 0, 0.10), 0 1px 3px 0 rgba(0, 0, 0, 0.2);
+  box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.12), 0 2px 1px -1px rgba(0, 0, 0, 0.1),
+    0 1px 3px 0 rgba(0, 0, 0, 0.2);
   border-radius: 3px;
   margin-top: 10px;
-  p{
+  p {
     margin-bottom: 5px;
   }
-  .label{
+  .label {
     font-size: 16px;
     font-weight: normal;
   }
@@ -336,21 +336,20 @@
     font-size: 24px;
     font-weight: 500;
   }
-   th {
-    padding:20px 15px;
+  th {
+    padding: 20px 15px;
   }
 }
-
 
 // news card
 
 .news-card {
-padding: 10px 15px;
-  &__body{
-    padding:0
+  padding: 10px 15px;
+  &__body {
+    padding: 0;
   }
-  img{
-    height:150px;
+  img {
+    height: 150px;
     object-fit: cover;
   }
 }
