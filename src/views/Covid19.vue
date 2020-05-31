@@ -16,10 +16,11 @@
           </div>
           <div class="covid-question" v-if="tempStatus">
             <div class="title">
-              Have you recently started experiencing any of these symptoms?
+              <!-- Have you recently started experiencing any of these symptoms? -->
+              {{question.question}}
             </div>
             <div class="options">
-              <li class="options__item">Fever or chills</li>
+              <!-- <li class="options__item">Fever or chills</li>
               <li class="options__item options__item--active">
                 Mild or Moderate difficulty breathing
               </li>
@@ -34,11 +35,14 @@
               <li class="options__item">
                 In the last 14 days, what is your exposure to others who are
                 known to have COVID‑19
+              </li> -->
+              <li class="options__item" :class="opt.selected ? `options__item--active`: ``" v-for="(opt, key) in question.options" :key="key" @click="() => selectHandler(key)">
+                {{opt.value}}
               </li>
             </div>
             <div class="footer">
-              <div class="footer-btn inactive">Back</div>
-              <div class="footer-btn active">Next</div>
+              <div class="footer-btn active" @click="backHandler()">Back</div>
+              <div class="footer-btn active" @click="nextHandler()">Next</div>
             </div>
           </div>
         </div>
@@ -63,7 +67,6 @@ export default {
   },
   methods: {
     changeScene: function() {
-      console.log('chagnes')
       this.tempStatus = true
     },
     init: function() {
@@ -87,7 +90,10 @@ export default {
         result += total * item.factor
       })
       this.result = result
-      console.log(this.result)
+      
+    },
+    selectHandler: function(id){
+      this.question.options[id].selected = !this.question.options[id].selected
     },
     nextHandler: function() {
       if (this.finished == true) {

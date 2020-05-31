@@ -52,7 +52,7 @@ export const questions = [
             },
             {
                 value: "Diabetes with complications",
-                points: 0,
+                points: 1,
                 selected: false
             },
             {
@@ -72,7 +72,7 @@ export const questions = [
             },
             {
                 value: "None of the above",
-                points: 1,
+                points: 0,
                 selected: false
             }
         ]
@@ -101,14 +101,17 @@ export const questions = [
             {
                 value: "I have worked in a hospital or other facility in the past 14 days",
                 points: 1,
+                selected: false
             },
             {
                 value: "I plan to work in a hospital or other facility in the next 14 days",
                 points: 0.2,
+                selected: false
             },
             {
                 value: "I don't work or plan to work in medical facility",
                 points: 0,
+                selected: false
             },
 
         ]
@@ -119,19 +122,23 @@ export const questions = [
         options: [
           { 
             value: "I live in area where COVID is wide spreaded",
-            points: 1
+            points: 1,
+            selected: false
           },
           { 
             value: "I have visited area where COVID is wide spreaded",
-            points: 0.5
+            points: 0.5,
+            selected: false
           },
           { 
             value: "I don't know",
-            points: 0
+            points: 0,
+            selected: false
           },
           { 
             value: "None of the above",
-            points: 0
+            points: 0,
+            selected: false
           }
         ]
       },
@@ -141,19 +148,23 @@ export const questions = [
         options: [
           { 
             value: "I live with someone who has covid",
-            points: 1
+            points: 1,
+            selected: false
           },
           { 
             value: "I have close contact who has covid",
-            points: 1
+            points: 1,
+            selected: false
           },
           {
             value: "I have been near to someone who has covid",
-            points: 1
+            points: 1,
+            selected: false
           },
           {
             value: "I have no exposure",
-            points: 0
+            points: 0,
+            selected: false
           }
         ]
       },
@@ -163,11 +174,13 @@ export const questions = [
         options: [
           { 
             value: "I live in a long-term facility",
-            points: 1
+            points: 1,
+            selected: false
           },
           {
             value: "I don't live in a long-term facility",
-            points: 0
+            points: 0,
+            selected: false
           }
         ]
       }
