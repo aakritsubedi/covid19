@@ -90,7 +90,8 @@ const foodAndVeg =  [
 ]
 const medical = [
   { name: 'Jeevee', link: 'https://frog.ly/jeevee', contactNo: '01-4440109, 9801165960'},
-  { name: 'EPharmacy', link:'https://frog.ly/epharmacy' , contactNo: '980-8787939, 9863033500'}
+  { name: 'EPharmacy', link:'https://frog.ly/epharmacy' , contactNo: '980-8787939, 9863033500'},
+  { name: 'NepMeds', link: 'https://nepmeds.com.np/', contactNo: '01-5107462'}
 ]
 
 module.exports = {
