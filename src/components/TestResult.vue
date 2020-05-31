@@ -34,7 +34,7 @@ export default {
       let myResponses = [];
       this.questions.forEach(que => {
         que.options.forEach(opt => {
-          if (opt.selected) {
+          if (opt.selected && !opt.value.includes("None of")) {
             myResponses.push(opt.value);
           }
         });

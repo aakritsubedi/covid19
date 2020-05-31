@@ -5,6 +5,7 @@
         <div
           v-if="country === 'Nepal'"
           class="list-group__item"
+          :class="component == 'Map' ? 'list-group__item--active':''"
           @click="(event) => setComponent(event, 'Map')"
           title="Nepal Statistics"
         >
@@ -17,6 +18,7 @@
           class="list-group__item"
           @click="(event) => setComponent(event, 'Main')"
           title="World Statistics"
+          :class="component == 'Main' ? 'list-group__item--active':''"
         >
           <div class="list-group__icon">
             <i class="fa fa-globe"></i>
@@ -27,6 +29,7 @@
           class="list-group__item"
           @click="(event) => setComponent(event, 'Imp')"
           title="List of Imp Contact No."
+          :class="component == 'Imp' ? 'list-group__item--active':''"
         >
           <div class="list-group__icon">
             <i class="fa fa-sticky-note-o"></i>
@@ -37,6 +40,7 @@
           class="list-group__item"
           @click="(event) => setComponent(event, 'Hospital')"
           title="Hospital Info"
+          :class="component == 'Hospital' ? 'list-group__item--active':''"
         >
           <div class="list-group__icon">
             <i class="fa fa-hospital-o"></i>
@@ -48,6 +52,7 @@
           class="list-group__item"
           @click="(event) => setComponent(event, 'About')"
           title="About Covid19"
+          :class="component == 'About' ? 'list-group__item--active':''"
         >
           <div class="list-group__icon">
             <i class="fa fa-info"></i>
@@ -57,11 +62,7 @@
       </div>
     </div>
     <div class="display-area">
-      <img
-        class="header-image"
-        src="@/assets/images/covid.png"
-        alt="Covid 19"
-      />
+      <img class="header-image" src="@/assets/images/covid.png" alt="Covid 19" />
       <transition name="component-fade" mode="out-in">
         <component :is="component"></component>
       </transition>
@@ -76,38 +77,38 @@
 </template>
 
 <script>
-import Covid19 from '@/components/Dashboard/Covid19'
-import Main from '@/components/Dashboard/Main'
-import Imp from '@/components/Dashboard/Imp'
-import Hospital from '@/components/Dashboard/HospitalInfo'
-import About from '@/components/Dashboard/About'
-import Map from '@/components/Dashboard/Map/MapContainer'
+import Covid19 from "@/components/Dashboard/Covid19";
+import Main from "@/components/Dashboard/Main";
+import Imp from "@/components/Dashboard/Imp";
+import Hospital from "@/components/Dashboard/HospitalInfo";
+import About from "@/components/Dashboard/About";
+import Map from "@/components/Dashboard/Map/MapContainer";
 
 export default {
-  name: 'Dashboard',
+  name: "Dashboard",
   components: {
     Main,
     Imp,
     Hospital,
     Covid19,
     About,
-    Map,
+    Map
   },
   data() {
     return {
-      component: 'Main',
-      country: '',
-    }
+      component: "Main",
+      country: ""
+    };
   },
   methods: {
     setComponent: function(event, component) {
-      this.component = component
-    },
+      this.component = component;
+    }
   },
   created() {
-    this.country = localStorage.getItem('countryName')
-  },
-}
+    this.country = localStorage.getItem("countryName");
+  }
+};
 </script>
 
 <style>
