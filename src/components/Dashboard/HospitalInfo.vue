@@ -10,49 +10,47 @@
         />
       </div>
     </div>
-    <div style="overflow-x:auto;">
-      <table class="table mt-3">
-        <thead>
-          <tr>
-            <th width="40%">Hospital Info</th>
-            <th width="20%">Contact Info.</th>
-            <th width="40%">Info</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr v-for="(hospital, index) in filterHospital" :key="index">
-            <td>
-              <div class="hospital-list">
-                <li>{{ hospital.name }}</li>
-                <li>
-                  <b>{{ hospital.address }}</b> Province-{{ hospital.state }}
-                </li>
-              </div>
-            </td>
-            <td>
-              <div class="hospital-list">
-                <li>{{ hospital.phone || '-' }}</li>
-                <li v-if="hospital.contact_person">
-                  {{ hospital.contact_person }},
-                  {{ hospital.contact_person_number }}
-                </li>
-              </div>
-            </td>
-            <td>
-              <div class="hospital-list">
-                <li>No. of beds: {{ hospital.capacity.beds || 0 }}</li>
-                <li class="text-capitalize">
-                  Vantilator: {{ hospital.capacity.ventilators || 'no' }}
-                </li>
-                <li>
-                  Isolation Beds: {{ hospital.capacity.isolation_beds || '-' }}
-                </li>
-              </div>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
+    <table class="table mt-3">
+      <thead>
+        <tr>
+          <th width="40%">Hospital Info</th>
+          <th width="20%">Contact Info.</th>
+          <th width="40%">Info</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr v-for="(hospital, index) in filterHospital" :key="index">
+          <td>
+            <ul class="hospital-list">
+              <li>{{ hospital.name }}</li>
+              <li>
+                <b>{{ hospital.address }}</b> Province-{{ hospital.state }}
+              </li>
+            </ul>
+          </td>
+          <td>
+            <ul class="hospital-list">
+              <li>{{ hospital.phone || '-' }}</li>
+              <li v-if="hospital.contact_person">
+                {{ hospital.contact_person }},
+                {{ hospital.contact_person_number }}
+              </li>
+            </ul>
+          </td>
+          <td>
+            <ul class="hospital-list">
+              <li>No. of beds: {{ hospital.capacity.beds || 0 }}</li>
+              <li class="text-capitalize">
+                Vantilator: {{ hospital.capacity.ventilators || 'no' }}
+              </li>
+              <li>
+                Isolation Beds: {{ hospital.capacity.isolation_beds || '-' }}
+              </li>
+            </ul>
+          </td>
+        </tr>
+      </tbody>
+    </table>
   </div>
 </template>
 
