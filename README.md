@@ -4,6 +4,7 @@
   COVID-19 is a centralized system that help us to track the COVID report, list out the some important contact points, hospital data and symptoms, precaution measure to follow in this pendamic situations.  
 </p>
 <img src="images/index.png">
+
 #### Dashboard 
 <p>
   The dashboard displays the information based on your location. It contains the confirmed, recovered, and deaths cases of your country initially. User can view the global report just below the graphical representation of the country wise data. User have option to select the country and explore the data. 
@@ -21,9 +22,25 @@
   The list of important contact points, links and the information about COVID-19. 
 </p>
 
+#### COVID Screening Test
+<p>
+  This tool will help you assess your symptoms and determine if you're a good candidate for a coronavirus disease (COVID-19) test in your home community. It also offers guidance on when to seek medical care and what to do in the meantime. 
+</p>
+<img src="images/covidScreening.gif">
+
 #### Screenshots
+**Imp Contact Page**
 <img src="images/imp_contact.png">
+
+**COVID Info Page**
 <img src="images/covid.png">
+
+**Hospital Info Page**
+<img src="images/hospitalInfo.png">
+
+**COVID Screening Test**
+<img src="images/screeningTest.png">
+
 
 #### API Used 
 - https://covid19.mathdro.id/api
