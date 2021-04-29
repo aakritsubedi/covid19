@@ -2,8 +2,8 @@ import axios from "axios";
 
 const url = "https://covid19.mathdro.id/api";
 const geoUrl = "https://ipapi.co/json";
-const covidNepal = 'https://nepalcorona.info/api/v1'
-const covidNepalData= 'https://data.nepalcorona.info/api/v1/'
+const covidNepal = 'https://corona.askbhunte.com/api/v1/'
+const dataCovidData = 'https://data.askbhunte.com/api/v1/'
 
 export default {
   fetchAll: async () => {
@@ -86,12 +86,12 @@ export default {
       isp: localStorage.getItem("isp"),
     };
   },
-  countryData: async () => {
-    const url = "https://api.covid19api.com/summary";
-    const countries = await axios.get(url);
+  // countryData: async () => {
+  //   const url = "https://data.askbhunte.com/api/v1/covid/summary";
+  //   const countries = await axios.get(url);
 
-    return countries.data;
-  },
+  //   return countries.data;
+  // },
   // fetchHospital: async () => {
   //   const url = "http://localhost:9091/data/HospitalData";
   //   const hospitals = await axios.get(url);
@@ -110,11 +110,11 @@ export default {
   },
 
   districtData: async () => {
-    const districtData = await axios.get(covidNepalData+'/districts');
+    const districtData = await axios.get(dataCovidData+'/districts');
     const ids = districtData.data.map((data) => data.id)
 
     const eachDirstrictData = await Promise.all(ids.map(async (data) => {
-      const info = await axios.get(covidNepalData+'/districts/'+data)
+      const info = await axios.get(dataCovidData+'/districts/'+data)
       return info.data
     }))
 

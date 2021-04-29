@@ -3,7 +3,6 @@
     <div class="side-menu">
       <div class="list-group">
         <div
-          v-if="country === 'Nepal'"
           class="list-group__item"
           :class="component == 'Map' ? 'list-group__item--active':''"
           @click="(event) => setComponent(event, 'Map')"

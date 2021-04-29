@@ -3,7 +3,7 @@
     <Nepal />
     <div style="text-align:left;">
       <NepalSummary :nepalInfo="nepalInfo" />
-      <ProvinceSummary :provinceInfo="provinceInfo" />
+      <!-- <ProvinceSummary :provinceInfo="provinceInfo" /> -->
       <hr />
       <h2>Latest Update</h2>
       <div class="row">
@@ -38,12 +38,12 @@ import { mapGetters, mapActions } from "vuex";
 import Nepal from "./Map";
 import NepalSummary from "../Nepal/NepalSummaryTable";
 import News from "../../Card/News";
-import ProvinceSummary from "../Nepal/ProvinceSummaryTable";
+// import ProvinceSummary from "../Nepal/ProvinceSummaryTable";
 import DistrictSummary from "../Nepal/DistrictSummaryTable";
 
 export default {
   name: "Map",
-  components: { Nepal, NepalSummary, News, ProvinceSummary, DistrictSummary },
+  components: { Nepal, NepalSummary, News, DistrictSummary },
   methods: {
     ...mapActions([
       "getNepalInfo",
