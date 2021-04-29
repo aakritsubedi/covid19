@@ -121,7 +121,7 @@ export default {
     return eachDirstrictData
 },
   latestNews: async () => {
-    const nepalNews = await axios.get(covidNepal+'/news');
+    const nepalNews = await axios.get(covidNepal+'news?limit=20000000');
 
     return nepalNews.data;
   },

@@ -108,8 +108,10 @@ const actions = {
 
   async getNepalNews({ commit }) {
     let latestNews = await api.latestNews();
-    
-    commit('setNepalNews', latestNews.data.slice(0, 20));
+    let  news = latestNews.data.reverse();
+    news = news.slice(0, 50);
+
+    commit('setNepalNews', news);
   },
 
   async getProvinceData({ commit }) {
